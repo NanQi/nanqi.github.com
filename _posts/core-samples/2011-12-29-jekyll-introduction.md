@@ -1,7 +1,7 @@
 ---
-layout: post
-category : lessons
-tags : [intro, beginner, jekyll, tutorial]
+layout : post
+category : NanQi 
+tags : [NanQi]
 ---
 {% include JB/setup %}
 

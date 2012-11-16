@@ -1,6 +1,9 @@
-# Jekyll-Bootstrap
+# 关于神棍工作室
 
-The quickest way to start and publish your Jekyll powered blog. 100% compatible with GitHub pages
+神棍是一种生活态度;
+神棍是迷路的人用来指点目标的一种无奈的方法,人们不到山穷水尽的时候是不会使用的;
+神棍工作室是小刺和小能组建的;
+神棍工作室成立于天朝六十一年;
 
 ## Usage
 
