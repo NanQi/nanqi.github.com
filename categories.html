@@ -6,7 +6,7 @@ group: navigation
 ---
 {% include JB/setup %}
 
-<h2>SELECT * FROM blogs GROUP BY category</h2>
+<pre><code>SELECT * FROM blogs GROUP BY category</code></pre>
 <ul class="tag_box inline">
   {% assign categories_list = site.categories %}
   {% include JB/categories_list %}
