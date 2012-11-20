@@ -1,7 +1,7 @@
 ---
 layout : post
-category : NanQi 
-tags : [NanQi]
+category : memo
+tags : [jekyll]
 ---
 {% include JB/setup %}
 

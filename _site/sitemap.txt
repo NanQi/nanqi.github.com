@@ -8,4 +8,4 @@ http://nanqi.github.com/sitemap.txt
 http://nanqi.github.com/tags.html
 
 http://nanqi.github.com/memo/2012/11/16/my-blog
-http://nanqi.github.com/NanQi/2011/12/29/jekyll-introduction
+http://nanqi.github.com/memo/2011/12/29/jekyll-introduction
