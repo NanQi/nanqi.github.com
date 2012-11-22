@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>关于jekyll的诸多问题</title>
-    <meta name="description" content="使用jekyll搭建博客时遇到的问题汇总">
+    <title>WeifenLuo的DockPanel技术备忘</title>
+    <meta name="description" content="记录在使用WeifenLuo的DockPanel控件时的一些问题">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -93,30 +93,46 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>关于jekyll的诸多问题</h1>
+  <h1>WeifenLuo的DockPanel技术备忘</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <h3 id='20121120'>2012-11-20</h3>
+    <h2>如何在双击窗体浮动时自定义其窗体属性</h2>
+
 <hr />
-<p>category 不能为中文，每个 category 会生成一个文件夹；</p>
 
-<p>对于首页(index.md)中遍历site.posts时间输出问题：</p>
+<p>一个普遍的问题，一直以来都没有去解决，觉得无伤大雅。最后还是在同事的不断催促下才琢磨着怎么弄。说来平平无奇，只是在Form上又套了一层Form。具体步骤如下：</p>
 
-<pre><code>{ { post.date | date_to_string } }</code></pre>
+<ul>
+<li>注册窗体DockStateChanged事件</li>
+<li>判断this.DockState为DockState.Float</li>
+<li>获取this.Parent转换成DockPane类型</li>
+<li>属性FloatWindow即为所需窗体</li>
+</ul>
 
-<p>输出一直都是英文，而在Archive页面发现<code>date_to_long_string</code>字样，使用发现还是英文显示，将之替换为<code>date_to_short_string</code>却发现有不只是日期，还有时间和时区；</p>
 
-<p>最后终于知道格式化方式：</p>
+<p>代码如下：</p>
 
-<pre><code>{ { post.date | date: &quot;%Y-%m-%d&quot; } }</code></pre>
-<hr />
+<pre><code>this.DockStateChanged += delegate
+{
+    if(this.DockState == WeifenLuo.WinFormsUI.Docking.DockState.Float)
+    {
+        DockPane dock = this.Parent as DockPane;
+        Form frmFloat = dock.FloatWindow;
+        frmFloat.ClientSize = new Size(800, 600);
+        frmFloat.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+        frmFloat.MinimizeBox = true;
+        frmFloat.MaximizeBox = true;
+    }
+}
+</code></pre>
+
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/memo/2011/12/29/jekyll-introduction" title="Jekyll Introduction">&larr; 上一页</a></li>
+        <li class="prev"><a href="/memo/2012/11/16/jekyll" title="关于jekyll的诸多问题">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
@@ -149,7 +165,7 @@
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-11-16</span>
+    <div class="date"><span>2012-11-22</span>
   </div>
 
   
@@ -161,7 +177,9 @@
 
   
      
-    	<li><a href="/tags.html#jekyll-ref">jekyll <span>2</span></a></li>
+    	<li><a href="/tags.html#C#-ref">C# <span>1</span></a></li>
+     
+    	<li><a href="/tags.html#第三方控件-ref">第三方控件 <span>1</span></a></li>
     
   
 
