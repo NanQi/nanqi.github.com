@@ -7,5 +7,6 @@ http://nanqi.github.com/pages.html
 http://nanqi.github.com/sitemap.txt
 http://nanqi.github.com/tags.html
 
-http://nanqi.github.com/memo/2012/11/22/csharp
+http://nanqi.github.com/memo/2012/11/22/winform
+http://nanqi.github.com/memo/2012/11/22/dockpanel
 http://nanqi.github.com/memo/2012/11/16/jekyll

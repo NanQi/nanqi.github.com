@@ -4,7 +4,7 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-11-22T03:35:09+00:00</updated>
+ <updated>2012-11-23T02:07:30+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
@@ -13,10 +13,66 @@
 
  
  <entry>
-   <title>WeifenLuo的DockPanel技术备忘</title>
-   <link href="http://nanqi.github.com/memo/2012/11/22/csharp"/>
+   <title>WinForm常用功能备忘</title>
+   <link href="http://nanqi.github.com/memo/2012/11/22/winform"/>
    <updated>2012-11-22T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/memo/2012/11/22/csharp</id>
+   <id>http://nanqi.github.com/memo/2012/11/22/winform</id>
+   <content type="html">&lt;h2&gt;DataGridView&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;在WinForm中，DataGridView是常用列表显示控件，也是相对复杂的一个控件，对于经常做管理软件的开发者，DataGridView也是打交道最多的一个。
+这里记录本人在实际开发中使用DataGridView的一些备忘。&lt;/p&gt;
+
+&lt;h3&gt;调整单元格样式后排序或其他方式使控件刷新而丢失样式的问题&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;很多软件都有这么一个需求：对于异常数据或特殊数据进行高亮显示。&lt;br/&gt;
+如一个超限软件，对于超限率不同的检测车辆进行不同的颜色显示；又如某设备管理软件，对于即将维保、年检的设备进行黄色提示，对于已过维保期的设备进行红色提示等等。&lt;br/&gt;
+本人在做的时候，都是在绑定数据后，循环遍历一次数据，判断某列的值是否符合某种标准，否则给予标注。&lt;/p&gt;
+
+&lt;p&gt;以前做法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void BindData()
+{
+    //BindData...
+
+    for(int i = 0; i &amp;lt; dataGridView1.Rows.Length; i++)
+    {
+        if(dataGridView.Rows[i].Cells[&quot;停用标识&quot;].Value.ToString() == &quot;启用&quot;)
+        {
+            dataGridView.Rows[i].Cells[&quot;停用标识&quot;].Style.BackColor = Color.Red;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;但随后发现如果点击排序，都会丢失之前设置的样式。
+对于这种不是很影响功能的问题，当初我都不怎么在意，或者对于不是很需要排序功能的直接禁止其排序。（这种思想是不是很不好……）&lt;/p&gt;
+
+&lt;p&gt;但问题终归是问题，最后还是得解决。
+注册CellFormatting事件，在其中进行判断。&lt;/p&gt;
+
+&lt;p&gt;代码如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void dataGridView1_CellFormatting(object sender, 
+    DataGridViewCellFormattingEventArgs e)
+{
+    if(e.ColumnIndex = 7 &amp;amp;&amp;amp; e.Value.ToString() == &quot;启用&quot;)
+    {
+        e.CellStyle.BackColor = Color.Red;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>WeifenLuo的DockPanel备忘</title>
+   <link href="http://nanqi.github.com/memo/2012/11/22/dockpanel"/>
+   <updated>2012-11-22T00:00:00+00:00</updated>
+   <id>http://nanqi.github.com/memo/2012/11/22/dockpanel</id>
    <content type="html">&lt;h2&gt;如何在双击窗体浮动时自定义其窗体属性&lt;/h2&gt;
 
 &lt;hr /&gt;
