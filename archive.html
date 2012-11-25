@@ -1,12 +1,12 @@
 ---
 layout: page
-title : Archive
-header : Post Archive
+title: Archive
+header: Posts By Archive
 group: navigation
 ---
 {% include JB/setup %}
 
-   <pre><code>SELECT * FROM bolgs ORDER BY time DESC</code></pre>
+<pre><code>SELECT * FROM bolgs ORDER BY time DESC</code></pre>
 
 {% assign posts_collate = site.posts %}
 {% include JB/posts_collate %}
