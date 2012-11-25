@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>WinForm常用功能备忘</title>
-    <meta name="description" content="记录在开发时对于WinForm的一些基本类库或控件备忘">
+    <title>html备忘</title>
+    <meta name="description" content="html备忘">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -93,69 +93,53 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>WinForm常用功能备忘</h1>
+  <h1>html备忘</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <h2>DataGridView</h2>
+    <p>虽然自始至终，本人工作基本都未涉及WEB领域，但是WEB越来越流行却是事实，何况自己写博客，看网页都离不开WEB。<br/>
+我曾经也一度犹豫，做C/S开发好呢，还是做B/S开发好，但既然选择了远方，就只顾风雨兼程了，别等他人都成了牛人，我还在犹豫。<br/>
+这里记录下我在学习和使用HTML时遇到的所有问题。</p>
 
 <hr />
 
-<p>在WinForm中，DataGridView是常用列表显示控件，也是相对复杂的一个控件，对于经常做管理软件的开发者，DataGridView也是打交道最多的一个。
-这里记录本人在实际开发中使用DataGridView的一些备忘。</p>
-
-<h3>调整单元格样式后排序或其他方式使控件刷新而丢失样式的问题</h3>
+<h2>Style</h2>
 
 <hr />
 
-<p>很多软件都有这么一个需求：对于异常数据或特殊数据进行高亮显示。<br/>
-如一个超限软件，对于超限率不同的检测车辆进行不同的颜色显示；又如某设备管理软件，对于即将维保、年检的设备进行黄色提示，对于已过维保期的设备进行红色提示等等。<br/>
-本人在做的时候，都是在绑定数据后，循环遍历一次数据，判断某列的值是否符合某种标准，否则给予标注。</p>
+<h3>如何使图片在屏幕正中间显示</h3>
 
-<p>以前做法：</p>
+<hr />
 
-<pre><code>void BindData()
-{
-    //BindData...
+<p>这是我在做博客的404页面时碰到的问题。<br/>
+网上随意找了个404的图片，感觉挺好，准备使用，但是随即发现，要把图片居中显示在屏幕正中间还真成了一个问题了。<br/>
+其实很多人都发现，左右居中没问题，问题是如何上下居中。</p>
 
-    for(int i = 0; i &lt; dataGridView1.Rows.Length; i++)
+<pre><code>&lt;style type="text/css"&gt;
+  &lt;!--
+    body
     {
-        if(dataGridView.Rows[i].Cells["停用标识"].Value.ToString() == "启用")
-        {
-            dataGridView.Rows[i].Cells["停用标识"].Style.BackColor = Color.Red;
-        }
+        background-image: URL('image/404.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
-}
+  --&gt;
+&lt;/style&gt;
 </code></pre>
 
-<p>但随后发现如果点击排序，都会丢失之前设置的样式。
-对于这种不是很影响功能的问题，当初我都不怎么在意，或者对于不是很需要排序功能的直接禁止其排序。（这种思想是不是很不好……）</p>
-
-<p>但问题终归是问题，最后还是得解决。
-注册CellFormatting事件，在其中进行判断。</p>
-
-<p>代码如下：</p>
-
-<pre><code>void dataGridView1_CellFormatting(object sender, 
-    DataGridViewCellFormattingEventArgs e)
-{
-    if(e.ColumnIndex = 7 &amp;&amp; e.Value.ToString() == "启用")
-    {
-        e.CellStyle.BackColor = Color.Red;
-    }
-}
-</code></pre>
+<p>这也正是我404页面所用的图片居中样式。</p>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/memo/2012/11/22/dockpanel" title="WeifenLuo的DockPanel备忘">&larr; 上一页</a></li>
+        <li class="prev"><a href="/memo/2012/11/22/winform" title="WinForm常用功能备忘">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
-        <li class="next"><a href="/memo/2012/11/25/html" title="html备忘">下一页 &rarr;</a></li>
+        <li class="next disabled"><a>下一页 &rarr;</a>
       
       </ul>
     </div>
@@ -184,7 +168,7 @@
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-11-22</span>
+    <div class="date"><span>2012-11-25</span>
   </div>
 
   
@@ -196,9 +180,9 @@
 
   
      
-    	<li><a href="/tags.html#C#-ref">C# <span>2</span></a></li>
+    	<li><a href="/tags.html#html-ref">html <span>1</span></a></li>
      
-    	<li><a href="/tags.html#WinForm-ref">WinForm <span>1</span></a></li>
+    	<li><a href="/tags.html#web-ref">web <span>1</span></a></li>
     
   
 
