@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>html备忘</title>
-    <meta name="description" content="html备忘">
+    <title>bblean备忘</title>
+    <meta name="description" content="在使用bblean时修改的功能和设置">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -101,53 +101,63 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>html备忘</h1>
+  <h1>bblean备忘</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <p>虽然自始至终，本人工作基本都未涉及WEB领域，但是WEB越来越流行却是事实，何况自己写博客，看网页都离不开WEB。<br/>
-我曾经也一度犹豫，做C/S开发好呢，还是做B/S开发好，但既然选择了远方，就只顾风雨兼程了，别等他人都成了牛人，我还在犹豫。<br/>
-这里记录下我在学习和使用HTML时遇到的所有问题。</p>
+    <p>关于bblean是什么，这里就不多介绍，参见<a href="http://bb4win.sourceforge.net/bblean/">bblean</a></p>
+
+<h2>与Chrome标题栏冲突</h2>
 
 <hr />
 
-<h2>Style</h2>
+<p>在使用bblean的首先问题就是与chrome冲突。<br/>
+主要问题是两个标题栏的问题。<br/>
+解决方案：</p>
 
-<hr />
+<ul>
+<li>以文本文件打开安装目录下plugins/bbLeanSkin/exclusions.rc</li>
+<li>在注释：# programs which come with their own skin:列表后增加chrome.exe</li>
+</ul>
 
-<h3>如何使图片在屏幕正中间显示</h3>
 
-<hr />
+<p>如下：</p>
 
-<p>这是我在做博客的404页面时碰到的问题。<br/>
-网上随意找了个404的图片，感觉挺好，准备使用，但是随即发现，要把图片居中显示在屏幕正中间还真成了一个问题了。<br/>
-其实很多人都发现，左右居中没问题，问题是如何上下居中。</p>
-
-<pre><code>&lt;style type="text/css"&gt;
-  &lt;!--
-    body
-    {
-        background-image: URL('image/404.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-  --&gt;
-&lt;/style&gt;
+<pre><code># programs which come with their own skin:
+trillian.exe
+toolkit.dll
+winamp.exe
+Wmp.dll
+chrome.exe
 </code></pre>
 
-<p>这也正是我404页面所用的图片居中样式。</p>
+<h2>修改几个常用Win+快捷键</h2>
+
+<hr />
+
+<p>安装的bblean中自带了插件bbKeys，但是Win+E默认打开的是explorer，而常用的Win+D直接成了桌面属性。<br/>
+我将Win+E更改为TC，而Win+D实在找不到原本的效果，只能使用Win+M（全部最小化）去代替。<br/>
+至于使用TC，我认为既然连bblean都使用了，那么应该放弃explorer而使用TC<br/>
+解决方案：
+以本文本件打开安装目录下plugins/bbKeys/bbKeys.rc</p>
+
+<pre><code>KeyToGrab(E), WithModifier(Win), WithAction(ExecCommand), DoThis(tc)
+KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.MinimizeAll)
+</code></pre>
+
+<p>应该都不是很难理解，KeyToGrab表示按键，而WithModifier表示功能键，至于后面的，也不必深究。<br/>
+这里有个问题，在我的机子上，我早已经增加了tc的快捷命令，建议也这样做，对于一些有参数的很方便（比如说cygwin）。</p>
 
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/memo/2012/11/22/winform" title="WinForm常用功能备忘">&larr; 上一页</a></li>
+        <li class="prev"><a href="/memo/2012/11/25/html" title="html备忘">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
-        <li class="next"><a href="/memo/2012/11/26/bblean" title="bblean备忘">下一页 &rarr;</a></li>
+        <li class="next disabled"><a>下一页 &rarr;</a>
       
       </ul>
     </div>
@@ -176,7 +186,7 @@
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-11-25</span>
+    <div class="date"><span>2012-11-26</span>
   </div>
 
   
@@ -188,9 +198,7 @@
 
   
      
-    	<li><a href="/tags.html#html-ref">html <span>1</span></a></li>
-     
-    	<li><a href="/tags.html#web-ref">web <span>1</span></a></li>
+    	<li><a href="/tags.html#软件-ref">软件 <span>1</span></a></li>
     
   
 

@@ -4,13 +4,63 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-11-25T13:12:58+00:00</updated>
+ <updated>2012-11-26T08:32:39+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
    <email>luyu_1216@126.com</email>
  </author>
 
+ 
+ <entry>
+   <title>bblean备忘</title>
+   <link href="http://nanqi.github.com/memo/2012/11/26/bblean"/>
+   <updated>2012-11-26T00:00:00+00:00</updated>
+   <id>http://nanqi.github.com/memo/2012/11/26/bblean</id>
+   <content type="html">&lt;p&gt;关于bblean是什么，这里就不多介绍，参见&lt;a href=&quot;http://bb4win.sourceforge.net/bblean/&quot;&gt;bblean&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;与Chrome标题栏冲突&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;在使用bblean的首先问题就是与chrome冲突。&lt;br/&gt;
+主要问题是两个标题栏的问题。&lt;br/&gt;
+解决方案：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;以文本文件打开安装目录下plugins/bbLeanSkin/exclusions.rc&lt;/li&gt;
+&lt;li&gt;在注释：# programs which come with their own skin:列表后增加chrome.exe&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# programs which come with their own skin:
+trillian.exe
+toolkit.dll
+winamp.exe
+Wmp.dll
+chrome.exe
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;修改几个常用Win+快捷键&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;安装的bblean中自带了插件bbKeys，但是Win+E默认打开的是explorer，而常用的Win+D直接成了桌面属性。&lt;br/&gt;
+我将Win+E更改为TC，而Win+D实在找不到原本的效果，只能使用Win+M（全部最小化）去代替。&lt;br/&gt;
+至于使用TC，我认为既然连bblean都使用了，那么应该放弃explorer而使用TC&lt;br/&gt;
+解决方案：
+以本文本件打开安装目录下plugins/bbKeys/bbKeys.rc&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;KeyToGrab(E), WithModifier(Win), WithAction(ExecCommand), DoThis(tc)
+KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.MinimizeAll)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;应该都不是很难理解，KeyToGrab表示按键，而WithModifier表示功能键，至于后面的，也不必深究。&lt;br/&gt;
+这里有个问题，在我的机子上，我早已经增加了tc的快捷命令，建议也这样做，对于一些有参数的很方便（比如说cygwin）。&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>html备忘</title>
