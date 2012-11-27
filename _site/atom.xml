@@ -4,7 +4,7 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-11-27T01:28:41+00:00</updated>
+ <updated>2012-11-27T06:20:57+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
@@ -14,9 +14,9 @@
  
  <entry>
    <title>bblean备忘</title>
-   <link href="http://nanqi.github.com/memo/2012/11/26/bblean"/>
+   <link href="http://nanqi.github.com/blog/2012/11/26/bblean"/>
    <updated>2012-11-26T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/memo/2012/11/26/bblean</id>
+   <id>http://nanqi.github.com/blog/2012/11/26/bblean</id>
    <content type="html">&lt;p&gt;关于bblean是什么，这里就不多介绍，参见&lt;a href=&quot;http://bb4win.sourceforge.net/bblean/&quot;&gt;bblean&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2&gt;与Chrome标题栏冲突&lt;/h2&gt;
@@ -64,9 +64,9 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
  
  <entry>
    <title>html备忘</title>
-   <link href="http://nanqi.github.com/memo/2012/11/25/html"/>
+   <link href="http://nanqi.github.com/blog/2012/11/25/html"/>
    <updated>2012-11-25T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/memo/2012/11/25/html</id>
+   <id>http://nanqi.github.com/blog/2012/11/25/html</id>
    <content type="html">&lt;p&gt;虽然自始至终，本人工作基本都未涉及WEB领域，但是WEB越来越流行却是事实，何况自己写博客，看网页都离不开WEB。&lt;br/&gt;
 我曾经也一度犹豫，做C/S开发好呢，还是做B/S开发好，但既然选择了远方，就只顾风雨兼程了，别等他人都成了牛人，我还在犹豫。&lt;br/&gt;
 这里记录下我在学习和使用HTML时遇到的所有问题。&lt;/p&gt;
@@ -76,8 +76,8 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 &lt;hr /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;em&gt;2012-11-25&lt;/em&gt; 创建文章，如何使图片在屏幕正中间显示&lt;/li&gt;
-&lt;li&gt;&lt;em&gt;2012-11-27&lt;/em&gt; 增加 关于语音输入&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;2012-11-25&lt;/em&gt; 创建文章，&lt;a href=&quot;#CenterImage&quot;&gt;如何使图片在屏幕正中间显示&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;2012-11-27&lt;/em&gt; 增加&lt;a href=&quot;#Speech&quot;&gt;关于语音输入&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 
@@ -85,7 +85,8 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 
 &lt;hr /&gt;
 
-&lt;p&gt;几乎整个Web开发都离不开Style问题的干扰。&lt;/p&gt;
+&lt;p&gt;几乎整个Web开发都离不开Style问题的干扰。
+&lt;section id=&quot;CenterImage&quot;/&gt;&lt;/p&gt;
 
 &lt;h3&gt;如何使图片在屏幕正中间显示&lt;/h3&gt;
 
@@ -110,7 +111,9 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 
 &lt;p&gt;这也正是我404页面所用的图片居中样式。&lt;/p&gt;
 
-&lt;h2&gt;关于语音输入&lt;/h2&gt;
+&lt;p&gt;&lt;section id=&quot;Speech&quot;/&gt;&lt;/p&gt;
+
+&lt;h3&gt;关于语音输入&lt;/h3&gt;
 
 &lt;hr /&gt;
 
@@ -136,9 +139,9 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
  
  <entry>
    <title>WinForm常用功能备忘</title>
-   <link href="http://nanqi.github.com/memo/2012/11/22/winform"/>
+   <link href="http://nanqi.github.com/blog/2012/11/22/winform"/>
    <updated>2012-11-22T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/memo/2012/11/22/winform</id>
+   <id>http://nanqi.github.com/blog/2012/11/22/winform</id>
    <content type="html">&lt;h2&gt;DataGridView&lt;/h2&gt;
 
 &lt;hr /&gt;
@@ -192,9 +195,9 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
  
  <entry>
    <title>WeifenLuo的DockPanel备忘</title>
-   <link href="http://nanqi.github.com/memo/2012/11/22/dockpanel"/>
+   <link href="http://nanqi.github.com/blog/2012/11/22/dockpanel"/>
    <updated>2012-11-22T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/memo/2012/11/22/dockpanel</id>
+   <id>http://nanqi.github.com/blog/2012/11/22/dockpanel</id>
    <content type="html">&lt;h2&gt;如何在双击窗体浮动时自定义其窗体属性&lt;/h2&gt;
 
 &lt;hr /&gt;
@@ -229,14 +232,46 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
  
  <entry>
    <title>关于jekyll的诸多问题</title>
-   <link href="http://nanqi.github.com/memo/2012/11/16/jekyll"/>
+   <link href="http://nanqi.github.com/blog/2012/11/16/jekyll"/>
    <updated>2012-11-16T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/memo/2012/11/16/jekyll</id>
-   <content type="html">&lt;h3&gt;2012-11-20&lt;/h3&gt;
+   <id>http://nanqi.github.com/blog/2012/11/16/jekyll</id>
+   <content type="html">&lt;h2&gt;更新历史：&lt;/h2&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;category 不能为中文，每个 category 会生成一个文件夹；&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;2012-11-20&lt;/em&gt; 创建文章，&lt;a href=&quot;#NotCN&quot;&gt;category不能为中文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;2012-11-20&lt;/em&gt; &lt;a href=&quot;#FormatDate&quot;&gt;增加时间格式化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;2012-11-27&lt;/em&gt; 增加&lt;a href=&quot;#FileName&quot;&gt;文件名大小写影响&lt;/a&gt;，&lt;a href=&quot;#QNotCN&quot;&gt;解决category不能为中文问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;h2&gt;问题列表&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;#NotCN&quot;&gt;category不能为中文&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#FormatDate&quot;&gt;格式化日期&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#FileName&quot;&gt;文件名大小写影响&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#QNotCN&quot;&gt;解决category不能为中文问题&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;&lt;section id=&quot;NotCN&quot;/&gt;&lt;/p&gt;
+
+&lt;h3&gt;category不能为中文&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;category 不能为中文，因为每个 category 会生成一个文件夹。&lt;br/&gt;
+在执行jekyll --no-auto时会报错。（也可能由于我cygwin的问题）&lt;/p&gt;
+
+&lt;p&gt;&lt;section id=&quot;FormatDate&quot;/&gt;&lt;/p&gt;
+
+&lt;h3&gt;格式化日期&lt;/h3&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;对于首页(index.md)中遍历site.posts时间输出问题：&lt;/p&gt;
 
@@ -250,7 +285,34 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 &lt;pre&gt;&lt;code&gt;{ { post.date | date: &quot;%Y-%m-%d&quot; } }
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;&lt;section id=&quot;FileName&quot;/&gt;&lt;/p&gt;
+
+&lt;h3&gt;文件名大小写影响&lt;/h3&gt;
+
 &lt;hr /&gt;
+
+&lt;p&gt;今天在做&lt;a href=&quot;/blog/2012/11/25/html/#Speech&quot;&gt;关于语音输入&lt;/a&gt;时发现图片文件大小写的问题在github中不识别。但是在本地可以。&lt;br/&gt;
+也就是说，我有个一个图片/image/speech.PNG，在代码中写：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;![淘宝语音搜索](/image/speech.png)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用小写，在本地运行jekyll后可以正常显示，但是push到github后却无法显示。&lt;/p&gt;
+
+&lt;p&gt;&lt;section id=&quot;QNotCN&quot;/&gt;&lt;/p&gt;
+
+&lt;h3&gt;解决category不能为中文问题&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;上面已经说道&lt;a href=&quot;#NotCN&quot;&gt;category不能为中文&lt;/a&gt;的问题，今天发现解决方案。&lt;br/&gt;
+其实一直也觉得用分类去编排url基本没有什么意义。但是不知道怎么去修改他。今天在阅读&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki&quot;&gt;官方的wiki&lt;/a&gt;时发现了&lt;a href=&quot;https://github.com/mojombo/jekyll/wiki/Permalinks&quot;&gt;永久链接&lt;/a&gt;。这正如我曾经说的，很多事情，只是你不知道，不是他不能实现。&lt;br/&gt;
+我的修改为：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;permalink: /blog/:year/:month/:day/:title
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在修改了permalink后出现一个问题。这也是我一直遗留的一个问题。请参见&lt;a href=&quot;/Questions.html#CygwinCN&quot;&gt;cygwin中文乱码&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  

@@ -2,7 +2,7 @@
 layout: post
 title: "WeifenLuo的DockPanel备忘"
 description: "记录在使用WeifenLuo的DockPanel控件时的一些问题"
-category: memo
+category: 备忘
 tags: [C#, 第三方控件, WinForm]
 ---
 {% include JB/setup %}

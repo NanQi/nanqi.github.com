@@ -1,0 +1,4 @@
+/*div#divPost a {text-decoration: none; transition: all 0.2s ease-in-out; -webkit-transition: all 0.2s ease-out; -moz-transition: all 0.2s ease-out; -o-transition: all 0.2s ease-out;}
+div#divPost a:hover {border-radius: 4px; box-shadow: 0 0 0 2px #102040;}*/
+div#divPost a {color:#4A75B5;text-decoration:none;outline:none;padding-right:13px;background:url('/image/icons.gif') no-repeat right 1px;}
+div#divPost a:hover {text-decoration:underline;background-position:right -14px;}
