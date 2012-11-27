@@ -4,7 +4,7 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-11-26T08:32:39+00:00</updated>
+ <updated>2012-11-27T01:19:46+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
@@ -71,11 +71,21 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 我曾经也一度犹豫，做C/S开发好呢，还是做B/S开发好，但既然选择了远方，就只顾风雨兼程了，别等他人都成了牛人，我还在犹豫。&lt;br/&gt;
 这里记录下我在学习和使用HTML时遇到的所有问题。&lt;/p&gt;
 
+&lt;h2&gt;更新历史：&lt;/h2&gt;
+
 &lt;hr /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;2012-11-25&lt;/em&gt; 创建文章，如何使图片在屏幕正中间显示&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;2012-11-27&lt;/em&gt; 增加 关于语音输入&lt;/li&gt;
+&lt;/ul&gt;
+
 
 &lt;h2&gt;Style&lt;/h2&gt;
 
 &lt;hr /&gt;
+
+&lt;p&gt;几乎整个Web开发都离不开Style问题的干扰。&lt;/p&gt;
 
 &lt;h3&gt;如何使图片在屏幕正中间显示&lt;/h3&gt;
 
@@ -99,6 +109,28 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;这也正是我404页面所用的图片居中样式。&lt;/p&gt;
+
+&lt;h2&gt;关于语音输入&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/speech.png&quot; alt=&quot;淘宝语音搜索&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;本来以为是很复杂的实现，没有太过在意。&lt;br/&gt;
+后来发现在Chrome中有，但是IE中却没有，网上查了下，发现实现很简单，几乎只需要一句代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;input x-webkit-speech /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;效果如下：&lt;/p&gt;
+
+&lt;p&gt;&lt;input x-webkit-speech /&gt;&lt;/p&gt;
+
+&lt;p&gt;看到这段代码立刻就知道为什么在Chrome中有，但是IE中没有。是的，这只支持webkit内核浏览器。&lt;br/&gt;
+关于这句代码，还有一点需要说说。&lt;br/&gt;
+直接把这句代码存成html文件，然后用Chrome打开即可看到效果。&lt;br/&gt;
+一个原因是html文件本来就能省略其他（当年给人演示就只放一个Button，现在有更好的），但是发现还是有很多人不知道，书本上的知识，认为一个html文件最基本的几个元素都必须得有（这个题当时我确实做过）。&lt;br/&gt;
+当然，语音搜索还有几个参数可以设置，比如说限制语言种类使用&lt;code&gt;lang=&quot;zh-CN&quot;&lt;/code&gt;又如专用于搜索的参数&lt;code&gt;x-webkit-grammar=&quot;bUIltin:search&quot;&lt;/code&gt;&lt;/p&gt;
 </content>
  </entry>
  
