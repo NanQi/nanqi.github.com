@@ -4,7 +4,7 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-12-05T15:42:43+00:00</updated>
+ <updated>2012-12-05T17:35:05+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
@@ -264,6 +264,91 @@ ViewStateDecoder是一个查看ViewState的工具，当初看杨中科视频的�
 &lt;li&gt;截图——QQ+HprSnap（前者有网了用着习惯，后者很强大啊，一直没删）&lt;/li&gt;
 &lt;/ul&gt;
 
+</content>
+ </entry>
+ 
+ <entry>
+   <title>一个筛选的demo</title>
+   <link href="http://nanqi.github.com/blog/2012/12/05/filter"/>
+   <updated>2012-12-05T00:00:00+00:00</updated>
+   <id>http://nanqi.github.com/blog/2012/12/05/filter</id>
+   <content type="html">&lt;p&gt;休息在家，难得有敲代码的雅兴，随手敲个demo，给大家看看。&lt;br/&gt;
+里面部分实现对于新手估计有所帮助，对于高手呢，就请大家给我指错吧。本人照单全收。&lt;/p&gt;
+
+&lt;p&gt;demo主要实现了两个功能。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;高级查找（FrmSift）&lt;/li&gt;
+&lt;li&gt;列表筛选（UCFilter）&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;关于sift和filter两个词这里就不做争论了。&lt;br/&gt;
+先看我画的demo界面：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/filter/main.png&quot; alt=&quot;主界面&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;高级查找&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/filter/sift_main.png&quot; alt=&quot;高级查找&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;高级查找针对于查找选项过多的情况下使用，做为一个通用的查找功能出现在软件项目中。&lt;br/&gt;
+高级查找使用时基本只需传入当前的DataGridView实例，生成需要的Where条件。&lt;br/&gt;
+在demo中，高级查找实现了基本的通用功能，可以在多个数据列表中使用。&lt;br/&gt;
+高级查找根据所给的DataGridView生成列选项（左边的选择项），对于某些不想显示的列可以隐藏（代码中我隐藏了第一列GUID），对于特殊的情况，可以传入一个SiftItem数组。&lt;br/&gt;
+数据类型现在只做了三种判断，而且判断方式让人吐血：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;switch (type.ToString())
+{
+    case &quot;System.Int16&quot;:
+    case &quot;System.Int32&quot;:
+    case &quot;System.Int64&quot;:
+    case &quot;System.Single&quot;:
+    case &quot;System.Double&quot;:
+    case &quot;System.Decimal&quot;:
+        siftType = SiftTypeEnum.Money;
+        break;
+    case &quot;System.DateTime&quot;:
+        siftType = SiftTypeEnum.Date;
+        break;
+    default:
+        siftType = SiftTypeEnum.Text;
+        break;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于数字类型和日期类型，给予两个条件共同完成——&lt;code&gt;从XXX至XXX&lt;/code&gt;，所以在处理上也费了点功夫。比如说删除其中一个，另一个也要删除等情况。&lt;br/&gt;
+高级查找现在只做了AND条件，没有强大的组合方式。&lt;br/&gt;
+值得一提的是在处理日期类型时不能得到多数据库的支持，这里由于只是模拟数据，使用DataTable的Select去模拟查找功能，日期类型没问题。但是如果是MSSQL可能会出错，如果更甚者在数据库中使用varchar保存日期类型，这里处理就更加麻烦。（比如本人在项目中就对Oracle的此类现象进行了处理）&lt;br/&gt;
+这里对于时间段做了一些功夫，其实都是有一次项目中需要，这里也就没删，保留了下来，希望对大家有用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/filter/sift_datetime.png&quot; alt=&quot;时间段&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;列表选择&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/filter/filter.png&quot; alt=&quot;列表选择&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;列表选择实现的最大一个功能就是可以筛选。&lt;br/&gt;
+对于筛选后的列表，不会改变已经选择的状态。&lt;br/&gt;
+其实很简单，不止保存数据源，还保存了对于每个数据的选择状态。&lt;br/&gt;
+在列表查找中，对于上方全选的处理实在让我费了不少功夫。&lt;br/&gt;
+主要是很多方面都要我去判断全选状态。&lt;br/&gt;
+ListCheckBox的ItemCheck事件和全选的CheckStateChanged事件几乎让我弄的惨不忍睹，加了减了，减了加了，如下类似的代码我调用了不知道多少次。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;this.chbxAll.CheckStateChanged -= this.chbxAll_CheckStateChanged;
+
+//do something
+
+this.chbxAll.CheckStateChanged += this.chbxAll_CheckStateChanged;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;好吧，写出来就是让大家指正的。&lt;/p&gt;
+
+&lt;p&gt;最后，源码：&lt;a href=&quot;http://files.cnblogs.com/nanqi/FilterDemo.zip&quot;&gt;下载&lt;/a&gt;&lt;/p&gt;
 </content>
  </entry>
  
