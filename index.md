@@ -30,4 +30,3 @@ tagline: 神棍是一种生活态度
 <li><span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>{{post.lasttime | date: "(%Y-%m-%d)"}}</li>
 {% endfor %}
 </ul>
------
