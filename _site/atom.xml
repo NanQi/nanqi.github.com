@@ -4,13 +4,101 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-12-10T11:57:55+00:00</updated>
+ <updated>2012-12-11T07:19:03+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
    <email>luyu_1216@126.com</email>
  </author>
 
+ 
+ <entry>
+   <title>软件功能是不是越多越好</title>
+   <link href="http://nanqi.github.com/blog/2012/12/11/features"/>
+   <updated>2012-12-11T00:00:00+00:00</updated>
+   <id>http://nanqi.github.com/blog/2012/12/11/features</id>
+   <content type="html">&lt;p&gt;软件业流传有这么一句话：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;有两种方式构建软件设计：一种是把软件做得很简单以至于明显找不到缺陷；另一种是把它做得很复杂以至于找不到明显的缺陷。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;最近接手一个项目。软件是一个开发工具，类似VS那种的可视化开发。&lt;br/&gt;
+原来的软件使用了&lt;code&gt;Interop.SourceSafeTypeLib.dll&lt;/code&gt;用VSS进行版本控制，后来众多因素，版本控制的功能也就去掉了，增加一个FTP功能。&lt;br/&gt;
+中间接手的项目肯定会有各种各样的问题，但是FTP这个功能基本是一个全新的且独立的（自主性非常高，完全可以废弃曾经做的），不存在阅读他人代码的问题。&lt;br/&gt;
+需求给的很简单：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;FTP上传，下载功能要求实现服务器文件和本地文件的同步，上传是将本地文件同步到服务器（Commit），下载是将服务器上文件同步到本地(Update),上传和下载时需要进行判断，当前两面文件是否一致，初步计划以文件大小或者更新时间为依据。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2&gt;开发时遇到的一些问题&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;页面布局简直信手拈来：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/features/features_main.png&quot; alt=&quot;FTP主界面&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;但是做了两天，发现需求无法确定软件功能，而软件功能究竟要做多少才是&lt;code&gt;够用&lt;/code&gt;？&lt;br/&gt;
+由于受&lt;a href=&quot;http://xbeta.info/tc/&quot;&gt;total commander&lt;/a&gt;的影响，对于这种左边一个目录，右边一个目录感觉很“顺眼。但是做起来却是问题多多。&lt;br/&gt;
+比如&lt;a href=&quot;/blog/2012/11/22/winform/#ListViewSort&quot;&gt;ListView的排序问题&lt;/a&gt;，从外部给当前目录增加文件、删除文件后的刷新问题，Unix文件格式和Windows文件格式问题，下载、上传时文件重名的覆盖、跳过、重命名问题……&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/image/features/features_FileExist.png&quot; alt=&quot;覆盖跳过重命名&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;尤其在做重命名时，发现远远没有自己想的那么简单。&lt;br/&gt;
+这些功能，要说都是很基本的一些，文件操作天天都在用，但是做起来远远没有自己想的那么容易。&lt;/p&gt;
+
+&lt;h2&gt;功能到底要做多少&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;一个FTP的上传、下载功能而已，有那么难么？&lt;/p&gt;
+
+&lt;p&gt;是的，不难。&lt;br/&gt;
+先不说类库中专门有针对FTP的封装，相信即使直接使用FTP命令做到“能上传”、“能下载”都很简单。但一个软件光做到“能”还是远远不够的。&lt;br/&gt;
+我在软件开发时，不止一次的想：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;这个功能做不做？
+
+FTP代理（防火墙）做不做？  
+FTP保持连接（发送虚包）做不做？  
+文件差异高亮显示功能做不做？  
+支持不支持上传下载目录？  
+……
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;某人曾经说我：你这是自己给自己找需求。&lt;br/&gt;
+试想在需求如此空泛的情况下，我能不自己给自己找需求么？&lt;/p&gt;
+
+&lt;p&gt;本来软件做了一个FTP的上传功能，对于当前编辑的文件，选择菜单中的上传，自动上传当前文件到设置的默认FTP服务器，如果服务器上已经有同名文件，进行提示。&lt;br/&gt;
+要说这个功能也就够了，能满足所谓的“需求”。&lt;/p&gt;
+
+&lt;h2&gt;功能是不是越多越好&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;pre&gt;&lt;code&gt;把这个功能做上，即使用不到先放在那里。  
+这个是锦上添花的功能，做了更好。  
+时间充足的情况下，这个功能还是做上。  
+……
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;正如本文开始所说，软件越复杂，缺陷、问题越多。&lt;br/&gt;
+功能不是越多越好，功能不是想到了用不到加上无所谓。&lt;br/&gt;
+每增加一个功能，要考虑对这个影响不影响，对那个影响不影响，要进行多少测试才可以，怎能是随便就能增加？&lt;br/&gt;
+要说功能应该在软件设计前期确定下来，但我经历的几个公司，只有粗略的计划，而没有详细的设计，只是说这个软件“能干什么干什么”，完全一副行外人的感觉。就好比我告诉你QQ能聊天，IE能浏览网页……&lt;br/&gt;
+当然，我总是在批评，但是真正让我开始做还是一样。&lt;br/&gt;
+大概去年，我完全负责一个小软件开发，我一直告诉自己，设计、设计，但是还是软件开始没三天就开始进行编码……&lt;/p&gt;
+
+&lt;h2&gt;写在后面&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;软件开发真所谓一个复杂而漫长的学习旅途。&lt;br/&gt;
+我越来越觉得曾经在小公司市老板做法很对：&lt;br/&gt;
+项目还没确定下来，就让我们先做出一个软件出来，投标的时候，其他功能介绍自己的软件有什么什么功能，能达到什么什么目的，而我们直接给客户演示……
+告诉我们，客户本来是没有需求的，但是当你给他软件的时候他就有需求了。&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>我现在所使用的软件清单</title>
