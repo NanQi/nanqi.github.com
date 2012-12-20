@@ -9,6 +9,7 @@ http://nanqi.github.com/Questions.html
 http://nanqi.github.com/sitemap.txt
 http://nanqi.github.com/tags.html
 
+http://nanqi.github.com/blog/2012/12/20/linq-count
 http://nanqi.github.com/blog/2012/12/16/unmain
 http://nanqi.github.com/blog/2012/12/11/features
 http://nanqi.github.com/blog/2012/12/05/software
