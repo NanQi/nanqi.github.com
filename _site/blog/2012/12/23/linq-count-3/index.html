@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>一个筛选的demo</title>
-    <meta name="description" content="介绍WinForm下一个筛选的实现方式，纯属项目之谈">
+    <title>从LINQ的Count方法说起-3</title>
+    <meta name="description" content="从LINQ的Count方法说起-3">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -110,98 +110,88 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>一个筛选的demo</h1>
+  <h1>从LINQ的Count方法说起-3</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <div id="divPost"><p>休息在家，难得有敲代码的雅兴，随手敲个demo，给大家看看。<br/>
-里面部分实现对于新手估计有所帮助，对于高手呢，就请大家给我指错吧。本人照单全收。</p>
-
-<p>demo主要实现了两个功能。</p>
+    <div id="divPost"><p>前两篇博客导航：</p>
 
 <ul>
-<li>高级查找（FrmSift）</li>
-<li>列表筛选（UCFilter）</li>
+<li><a href="/blog/2012/12/20/linq-count-1/">从LINQ的Count方法说起-1</a></li>
+<li><a href="/blog/2012/12/22/linq-count-2/">从LINQ的Count方法说起-2</a></li>
 </ul>
 
 
-<p>关于sift和filter两个词这里就不做争论了。<br/>
-先看我画的demo界面：</p>
-
-<p><img src="/image/filter/main.png" alt="主界面" /></p>
-
-<h2>高级查找</h2>
+<h2>舒尔特方格</h2>
 
 <hr />
 
-<p><img src="/image/filter/sift_main.png" alt="高级查找" /></p>
+<p>话说我曾经弄过WP应用，做了个很简单的一个游戏——<a href="http://baike.baidu.com/view/2450431.htm">舒尔特方格</a>：</p>
 
-<p>高级查找针对于查找选项过多的情况下使用，做为一个通用的查找功能出现在软件项目中。<br/>
-高级查找使用时基本只需传入当前的DataGridView实例，生成需要的Where条件。<br/>
-在demo中，高级查找实现了基本的通用功能，可以在多个数据列表中使用。<br/>
-高级查找根据所给的DataGridView生成列选项（左边的选择项），对于某些不想显示的列可以隐藏（代码中我隐藏了第一列GUID），对于特殊的情况，可以传入一个SiftItem数组。<br/>
-数据类型现在只做了三种判断，而且判断方式让人吐血：</p>
+<p><img src="/image/SchulteGrid1.png" alt="舒尔特方格1" />
+<img src="/image/SchulteGrid2.png" alt="舒尔特方格2" /></p>
 
-<pre><code>switch (type.ToString())
+<p>（由于我实在找不到原图了，只能拿这个有水印的图片）
+我要说的不是这个游戏，而是一个简单的不能再简单的问题——<strong>如何把25各数字随机排列在方格中</strong><br/>
+我曾写过的一个实现方式：</p>
+
+<pre><code>List&lt;int&gt; lst = new List&lt;int&gt;();
+
+for (int i = 1; i &lt;= 25; i++)
 {
-    case "System.Int16":
-    case "System.Int32":
-    case "System.Int64":
-    case "System.Single":
-    case "System.Double":
-    case "System.Decimal":
-        siftType = SiftTypeEnum.Money;
-        break;
-    case "System.DateTime":
-        siftType = SiftTypeEnum.Date;
-        break;
-    default:
-        siftType = SiftTypeEnum.Text;
-        break;
+    lst.Add(i);
+}
+
+foreach (Button btn in Schulte_Grid.Children)
+{
+    btn.Content = lst[ran.Next(lst.Count)].ToString();
+    lst.Remove(index);
 }
 </code></pre>
 
-<p>对于数字类型和日期类型，给予两个条件共同完成——<code>从XXX至XXX</code>，所以在处理上也费了点功夫。比如说删除其中一个，另一个也要删除等情况。<br/>
-高级查找现在只做了AND条件，没有强大的组合方式。<br/>
-值得一提的是在处理日期类型时不能得到多数据库的支持，这里由于只是模拟数据，使用DataTable的Select去模拟查找功能，日期类型没问题。但是如果是MSSQL可能会出错，如果更甚者在数据库中使用varchar保存日期类型，这里处理就更加麻烦。（比如本人在项目中就对Oracle的此类现象进行了处理）<br/>
-这里对于时间段做了一些功夫，其实都是有一次项目中需要，这里也就没删，保留了下来，希望对大家有用。</p>
+<p>当然，我现在找到更合适的方法：</p>
 
-<p><img src="/image/filter/sift_datetime.png" alt="时间段" /></p>
+<pre><code>List&lt;int&gt; lst = Enumerable.Range(1, 25).OrderBy(i =&gt; Guid.NewGuid()).ToList();
+Button btn;
+for (int i = 0; i &lt; Schulte_Grid.Children.Count; i++)
+{
+    btn = Schulte_Grid.Children[i];
+    btn.Content = lst[i].ToString();
+}
+</code></pre>
 
-<h2>列表选择</h2>
+<h2>关于OrderBy</h2>
 
 <hr />
 
-<p><img src="/image/filter/filter.png" alt="列表选择" /></p>
+<p>我在想，这个问题中，我从思想上就已经错了。<br/>
+我一直在想，如何从一个集合中随机取出，而不是想着如何把一个集合随机排列，然后依次取出。<br/>
+关于OrderBy方法，某些人不理解为什么返回值是一个泛型，也就是说返回什么都可以，所以经常见到的写法是：</p>
 
-<p>列表选择实现的最大一个功能就是可以筛选。<br/>
-对于筛选后的列表，不会改变已经选择的状态。<br/>
-其实很简单，不止保存数据源，还保存了对于每个数据的选择状态。<br/>
-在列表查找中，对于上方全选的处理实在让我费了不少功夫。<br/>
-主要是很多方面都要我去判断全选状态。<br/>
-ListCheckBox的ItemCheck事件和全选的CheckStateChanged事件几乎让我弄的惨不忍睹，加了减了，减了加了，如下类似的代码我调用了不知道多少次。</p>
-
-<pre><code>this.chbxAll.CheckStateChanged -= this.chbxAll_CheckStateChanged;
-
-//do something
-
-this.chbxAll.CheckStateChanged += this.chbxAll_CheckStateChanged;
+<pre><code>lst.OrderBy(i =&gt; i);
 </code></pre>
 
-<p>好吧，写出来就是让大家指正的。</p>
+<p>关于排序问题，必然涉及比较器，请参见<a href="/blog/2012/11/22/winform/#ListViewSort">关于ListView排序的众多问题</a>，这里就不再啰嗦了。</p>
 
-<p>最后，源码：<a href="http://files.cnblogs.com/nanqi/FilterDemo.zip">下载</a></p>
+<p>OrderBy本来是没什么好说的，但是如果用TSQL或查询表达式来想，如果对多字段排序应该怎么写？如果是降序排列呢？<br/>
+如果你试着想从OrderBy中实现这些，不是不行，不是说了有比较器么，但是这就又犯了<code>在一棵树上吊死</code>的错误了。<br/>
+在LINQ方法中，对于多字段排序有<code>ThenBy</code>方法，对于降序排序有<code>OrderByDescending</code>，对于降序多字段排序有<code>ThenByDescending</code>。<br/>
+这就让人思考，为什么不在OrderBy方法中多传几个参数，或多加几个重载（在4.0中甚至可以使用可选参数）达到效果，而要写这么多不同的方法呢？</p>
+
+<p>这些缘由很多，我怕我说不到位，说的不对，这里也就不说了，能给大家带来一些思考就已经达到我要的目的了。<br/>
+是想如果当年我写下那段舒尔特方格的代码，如果觉得写的很对，没有问题，这就是最好的写法，那么也就不会有当我看到随机排序时的恍然大悟。<br/>
+带着问题去学习，向来都是最高效的。</p>
 </div>
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/blog/2012/11/26/bblean" title="bblean备忘">&larr; 上一页</a></li>
+        <li class="prev"><a href="/blog/2012/12/22/linq-count-2" title="从LINQ的Count方法说起-2">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
-        <li class="next"><a href="/blog/2012/12/05/software" title="我现在所使用的软件清单">下一页 &rarr;</a></li>
+        <li class="next disabled"><a>下一页 &rarr;</a>
       
       </ul>
     </div>
@@ -230,7 +220,7 @@ this.chbxAll.CheckStateChanged += this.chbxAll_CheckStateChanged;
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-12-05</span>
+    <div class="date"><span>2012-12-23</span>
   </div>
 
   
@@ -244,7 +234,7 @@ this.chbxAll.CheckStateChanged += this.chbxAll_CheckStateChanged;
      
     	<li><a href="/tags.html#C#-ref">C# <span>6</span></a></li>
      
-    	<li><a href="/tags.html#WinForm-ref">WinForm <span>3</span></a></li>
+    	<li><a href="/tags.html#LINQ-ref">LINQ <span>3</span></a></li>
     
   
 
