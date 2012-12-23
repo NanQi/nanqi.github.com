@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>从LINQ的Count方法说起</title>
-    <meta name="description" content="从LINQ的Count方法说起">
+    <title>从LINQ的Count方法说起-2</title>
+    <meta name="description" content="从LINQ的Count方法说起-2">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -110,78 +110,97 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>从LINQ的Count方法说起</h1>
+  <h1>从LINQ的Count方法说起-2</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <div id="divPost"><h2>几句闲扯</h2>
+    <div id="divPost"><p>话说我<a href="/blog/2012/12/20/linq-count-1/">上一篇博客</a>说着说着说跑题了，想想干脆就写个连载得了，介绍一下使用LINQ中的一些问题。</p>
+
+<h2>SkipWhile为什么跳不过空行</h2>
 
 <hr />
 
-<p>在我学习LINQ时，确实感觉很爽。<br/>
-但是时间久了，慢慢也就不那么在意了。但是周围朋友总是记得<code>我会使用LINQ</code>编程。<br/>
-记得初中时候学几何，有一个已知三角形边长求面积的题，而我正巧知道<a href="http://baike.baidu.com/view/1279.htm">海伦公式</a>，之后凡是碰到可以使用此公式的题，同学都想起我会做，仿佛那公式应该以我的名字命名一样……<br/>
-某人问我有没有学习LINQ的资料，我实在说不出，因为我从来都没有系统的去学过LINQ。我基本只是使用几个IEnumerable<T>的扩展方法，要说学习也只是从某些第X版书中读过几句，平时也就在一个集合点一下然后看看各自说明。<br/>
-当然，LINQ不止于此，我也说不出到底LINQ都包含什么，什么是LINQ。</p>
+<p>某人想从一个字符串集合中筛选掉空行，结果写了这么一句（模拟）：</p>
 
-<blockquote><p>给一个东西，一门技术下定义，从来都不是一件简单的事。</p></blockquote>
+<pre><code>string[] lst = { "\r\n", "\r\n1", "\r\n2", "\r\n3" };
+var v = lst.SkipWhile(str =&gt; str.Trim() == "\r\n").ToList();
+</code></pre>
 
-<h2>事出有因</h2>
+<p>好了，然后他问我，为什么SkipWhile跳不过空行。<br/>
+以上是我模拟他的问题，实际上他是从一个文件中读出来所有文本，然后来了个Split（使用string[] separator，他知道用StringSplitOptions.RemoveEmptyEntries），数据大概就是这个样子，第一个数据是\r\n，他调试主要看运行完代码第一个还在不在。<br/>
+我理解他是想将集合中为空的数据筛选掉，但是写成这样实在让我惊讶，他至少有以下几个问题：</p>
+
+<ol>
+<li>不知道Trim方法会移除回车</li>
+<li>以为换行符都是\r\n</li>
+<li><strong>不理解SkipWhile</strong></li>
+</ol>
+
+
+<p>如果说第一个是因为粗心，第二个觉得没必要，那么第三个就没有解释的理由了。<br/>
+首先如果数据确定的情况下，把上面方法内的lambda表达式换成这样：</p>
+
+<pre><code>var v = lst.SkipWhile(str =&gt; string.IsNullOrEmpty(str.Trim())).ToList();
+</code></pre>
+
+<p>结果是他想要的，但这就是正确的么？<br/>
+如果把数据换成这样呢：</p>
+
+<pre><code>string[] lst = { "\r\n1", "\r\n", "\r\n2", "\r\n3" };
+</code></pre>
+
+<p>我想他可能把SkipWhile理解的要遍历每个元素，如果满足条件，则跳过。那么我就想问，如果真是这样，和Where有什么区别？</p>
+
+<p>至于没有考虑从读文本时做此操作，和一次把文件中的内容全读过来可能带来的风险这里就不说了。</p>
+
+<h2>Any和All</h2>
 
 <hr />
 
-<p>事情是这样的，今天有人问我一个小问题，关于LINQ，然后我不经意间看到一行代码：</p>
+<p>有时候我们会判断一个集合中是否有满足条件的值，比如说对于下面的数据：</p>
 
-<pre><code>int count = lst.Where(ch =&gt; char.IsNumber(ch)).Count();
+<pre><code>Random ran = new Random();
+int[] arr = new int[10];
+for (int i = 0; i &lt; arr.Length; i++)
+{
+    arr[i] = ran.Next(100);
+}
 </code></pre>
 
-<p>代码读起来很简单，就是从一个char集合里找出为数字的个数。<br/>
-代码没问题，但是还有个更好的写法：</p>
+<p>要判断生成的数组中是否有小于10的数，在LINQ之前，基本都是这样做：</p>
 
-<pre><code>int count = lst.Count(char.IsNumber);
+<pre><code>bool flg = false;
+foreach (var item in arr)
+{
+    if (item &lt; 10)
+    {
+        flg = true;
+        break;
+    }
+}
 </code></pre>
 
-<p>即便他不知道Count方法可以传参，那么他为什么不写成：</p>
+<p>而某人使用LINQ以后，写下了这样一个：</p>
 
-<pre><code>int count = lst.Where(char.IsNumber).Count();
+<pre><code>flg = arr.Where(i =&gt; i &lt;= 10).Count() &gt; 0;
 </code></pre>
 
-<p>我相信他根本就不知道这里为什么要写ch => char.IsNumber(ch)，根本就不知道这里需要的是一个方法。<br/>
-这让我想起一个男同事说一个女同事（所谓同事，都是程序猿），女的刚毕业，不怎么会，然后男的说女的写代码ToString不带括号。<br/>
-这姑且说是这个女同事不知道调用方法即使没有参数也需要带括号，或者说她根本就不知道ToString是一个方法，但是同样也说明这个男同事以为方法只能去调用（call）。<br/>
-或许简单下面的代码他会觉得很惊讶：</p>
+<p>（大家对于<code>=&gt;i&lt;=</code>是不是觉得挺有意思的）<br/>
+当然，他肯定不知道LINQ中有Any这个方法：</p>
 
-<pre><code>string[] arr = lst.Where(char.IsNumber).Select(char.ToString);
+<pre><code>flg = arr.Any(i =&gt; i &lt;= 10);
 </code></pre>
 
-<p>又或者在事件上：</p>
+<p>而All与Any“相反”，可以判断数组中的值是否都小于10。</p>
 
-<pre><code>delegate string GetNumberDelegate(char ch);
-event GetNumberDelegate GetNumberEvent;
-...
-this.GetNumberEvent += char.ToString;
-</code></pre>
-
-<h2>几点思考</h2>
-
-<hr />
-
-<p>我想大多数人习惯于使用ch => char.IsNumber(ch)是因为这样感觉很好理解，程序可以<code>读出来</code>。是的，写LINQ最爽的一点就是这里了。<br/>
-比如说使用Where方法，知道集合是一个char集合，那么ch很自然的可以当做char集合中每个元素，=>之后写下对每个元素的判断，很好理解，用起来很舒服。<br/>
-但是切莫执迷于表像而偏离本质。<br/>
-说起函数当做参数传递，记起曾经在封装一个日历控件的时候遇到一个问题：需要在已提交报表、未提交报表和还没到的日子分颜色：</p>
-
-<p><img src="/image/ucCalendar.gif" alt="日历控件" /></p>
-
-<p>但是关于颜色问题，修改了好多次，最后干脆我给封装的控件增加一个Func&lt;string, Color>，根据给定的类型（提交或未提交）去给定颜色。<br/>
-最后我要说的是我本来初衷不是写好多人不知道<code>函数也是一个对象</code>，不知道函数也可以去传递，但是写一下给写跑题了，干脆就继续写下去。而原本我是想说说几个LINQ扩展方法的先后问题，留在下一篇博客中说吧。</p>
+<p>好了，先说到这里，下篇介绍Group By。</p>
 </div>
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/blog/2012/12/16/unmain" title="其实根本不用混淆你的代码">&larr; 上一页</a></li>
+        <li class="prev"><a href="/blog/2012/12/20/linq-count-1" title="从LINQ的Count方法说起-1">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
@@ -214,7 +233,7 @@ this.GetNumberEvent += char.ToString;
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-12-20</span>
+    <div class="date"><span>2012-12-22</span>
   </div>
 
   
@@ -226,9 +245,9 @@ this.GetNumberEvent += char.ToString;
 
   
      
-    	<li><a href="/tags.html#C#-ref">C# <span>4</span></a></li>
+    	<li><a href="/tags.html#C#-ref">C# <span>5</span></a></li>
      
-    	<li><a href="/tags.html#LINQ-ref">LINQ <span>1</span></a></li>
+    	<li><a href="/tags.html#LINQ-ref">LINQ <span>2</span></a></li>
     
   
 

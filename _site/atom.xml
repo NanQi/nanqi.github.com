@@ -4,7 +4,7 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.github.com/atom.xml" rel="self"/>
  <link href="http://nanqi.github.com"/>
- <updated>2012-12-20T11:26:10+00:00</updated>
+ <updated>2012-12-23T01:34:26+00:00</updated>
  <id>http://nanqi.github.com</id>
  <author>
    <name>NanQi</name>
@@ -13,10 +13,98 @@
 
  
  <entry>
-   <title>从LINQ的Count方法说起</title>
-   <link href="http://nanqi.github.com/blog/2012/12/20/linq-count"/>
+   <title>从LINQ的Count方法说起-2</title>
+   <link href="http://nanqi.github.com/blog/2012/12/22/linq-count-2"/>
+   <updated>2012-12-22T00:00:00+00:00</updated>
+   <id>http://nanqi.github.com/blog/2012/12/22/linq-count-2</id>
+   <content type="html">&lt;p&gt;话说我&lt;a href=&quot;/blog/2012/12/20/linq-count-1/&quot;&gt;上一篇博客&lt;/a&gt;说着说着说跑题了，想想干脆就写个连载得了，介绍一下使用LINQ中的一些问题。&lt;/p&gt;
+
+&lt;h2&gt;SkipWhile为什么跳不过空行&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;某人想从一个字符串集合中筛选掉空行，结果写了这么一句（模拟）：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string[] lst = { &quot;\r\n&quot;, &quot;\r\n1&quot;, &quot;\r\n2&quot;, &quot;\r\n3&quot; };
+var v = lst.SkipWhile(str =&amp;gt; str.Trim() == &quot;\r\n&quot;).ToList();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;好了，然后他问我，为什么SkipWhile跳不过空行。&lt;br/&gt;
+以上是我模拟他的问题，实际上他是从一个文件中读出来所有文本，然后来了个Split（使用string[] separator，他知道用StringSplitOptions.RemoveEmptyEntries），数据大概就是这个样子，第一个数据是\r\n，他调试主要看运行完代码第一个还在不在。&lt;br/&gt;
+我理解他是想将集合中为空的数据筛选掉，但是写成这样实在让我惊讶，他至少有以下几个问题：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;不知道Trim方法会移除回车&lt;/li&gt;
+&lt;li&gt;以为换行符都是\r\n&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不理解SkipWhile&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;如果说第一个是因为粗心，第二个觉得没必要，那么第三个就没有解释的理由了。&lt;br/&gt;
+首先如果数据确定的情况下，把上面方法内的lambda表达式换成这样：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var v = lst.SkipWhile(str =&amp;gt; string.IsNullOrEmpty(str.Trim())).ToList();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果是他想要的，但这就是正确的么？&lt;br/&gt;
+如果把数据换成这样呢：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;string[] lst = { &quot;\r\n1&quot;, &quot;\r\n&quot;, &quot;\r\n2&quot;, &quot;\r\n3&quot; };
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我想他可能把SkipWhile理解的要遍历每个元素，如果满足条件，则跳过。那么我就想问，如果真是这样，和Where有什么区别？&lt;/p&gt;
+
+&lt;p&gt;至于没有考虑从读文本时做此操作，和一次把文件中的内容全读过来可能带来的风险这里就不说了。&lt;/p&gt;
+
+&lt;h2&gt;Any和All&lt;/h2&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;有时候我们会判断一个集合中是否有满足条件的值，比如说对于下面的数据：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Random ran = new Random();
+int[] arr = new int[10];
+for (int i = 0; i &amp;lt; arr.Length; i++)
+{
+    arr[i] = ran.Next(100);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;要判断生成的数组中是否有小于10的数，在LINQ之前，基本都是这样做：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;bool flg = false;
+foreach (var item in arr)
+{
+    if (item &amp;lt; 10)
+    {
+        flg = true;
+        break;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而某人使用LINQ以后，写下了这样一个：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flg = arr.Where(i =&amp;gt; i &amp;lt;= 10).Count() &amp;gt; 0;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;（大家对于&lt;code&gt;=&amp;gt;i&amp;lt;=&lt;/code&gt;是不是觉得挺有意思的）&lt;br/&gt;
+当然，他肯定不知道LINQ中有Any这个方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;flg = arr.Any(i =&amp;gt; i &amp;lt;= 10);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;而All与Any“相反”，可以判断数组中的值是否都小于10。&lt;/p&gt;
+
+&lt;p&gt;好了，先说到这里，下篇介绍Group By。&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>从LINQ的Count方法说起-1</title>
+   <link href="http://nanqi.github.com/blog/2012/12/20/linq-count-1"/>
    <updated>2012-12-20T00:00:00+00:00</updated>
-   <id>http://nanqi.github.com/blog/2012/12/20/linq-count</id>
+   <id>http://nanqi.github.com/blog/2012/12/20/linq-count-1</id>
    <content type="html">&lt;h2&gt;几句闲扯&lt;/h2&gt;
 
 &lt;hr /&gt;
