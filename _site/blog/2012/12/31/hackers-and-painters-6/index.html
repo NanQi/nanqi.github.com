@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>从LINQ的Count方法说起-3</title>
-    <meta name="description" content="从LINQ的Count方法说起-3">
+    <title>《黑客与画家》读书笔记 第六章</title>
+    <meta name="description" content="《黑客与画家》读书笔记">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -110,88 +110,50 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>从LINQ的Count方法说起-3</h1>
+  <h1>《黑客与画家》读书笔记 第六章</h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <div id="divPost"><p>前两篇博客导航：</p>
+    <div id="divPost"><p>前几章之所以没有记录，是因为这是自己这里的第一篇读书笔记。<br/>
+前几章其实也有不少值得记录的，这里就随便说几句。比如说黑客与画家时，说到数学家，其中说：</p>
 
-<ul>
-<li><a href="/blog/2012/12/20/linq-count-1/">从LINQ的Count方法说起-1</a></li>
-<li><a href="/blog/2012/12/22/linq-count-2/">从LINQ的Count方法说起-2</a></li>
-</ul>
+<blockquote><p>科学界的每一个人，暗地里都相信数学家比自己聪明。(P22)</p></blockquote>
 
+<p>然后说黑客应该认识到自己与其他创作者——比如作家和画家——是一类人。<br/>
+至少我就经常出现这种情况——自以为自己在做数学，其中多少有点装逼的成分。<br/>
+然后讲了不少互联网应用和本地应用，不止一次的提及——<code>如果能做出一个不是那么糟糕的浏览器</code>，则怎么怎么。<br/>
+如果作者敏锐的眼光已经给我等指定了一条明路，那么我们唯一缺少的就是做出来的能力了。</p>
 
-<h2>舒尔特方格</h2>
+<p>上面几句都是一些回忆，随便翻翻，随便写写，书看到第六章，要说的也是第六章。</p>
 
-<hr />
-
-<p>话说我曾经弄过WP应用，做了个很简单的一个游戏——<a href="http://baike.baidu.com/view/2450431.htm">舒尔特方格</a>：</p>
-
-<p><img src="/image/SchulteGrid1.png" alt="舒尔特方格1" />
-<img src="/image/SchulteGrid2.png" alt="舒尔特方格2" /></p>
-
-<p>（由于我实在找不到原图了，只能拿这个有水印的图片）
-我要说的不是这个游戏，而是一个简单的不能再简单的问题——<strong>如何把25各数字随机排列在方格中</strong><br/>
-我曾写过的一个实现方式：</p>
-
-<pre><code>List&lt;int&gt; lst = new List&lt;int&gt;();
-
-for (int i = 1; i &lt;= 25; i++)
-{
-    lst.Add(i);
-}
-
-foreach (Button btn in Schulte_Grid.Children)
-{
-    btn.Content = lst[ran.Next(lst.Count)].ToString();
-    lst.Remove(index);
-}
-</code></pre>
-
-<p>当然，我现在找到更合适的方法：</p>
-
-<pre><code>List&lt;int&gt; lst = Enumerable.Range(1, 25).OrderBy(i =&gt; Guid.NewGuid()).ToList();
-Button btn;
-for (int i = 0; i &lt; Schulte_Grid.Children.Count; i++)
-{
-    btn = Schulte_Grid.Children[i];
-    btn.Content = lst[i].ToString();
-}
-</code></pre>
-
-<h2>关于OrderBy</h2>
+<h2>如何创造财富</h2>
 
 <hr />
 
-<p>我在想，这个问题中，我从思想上就已经错了。<br/>
-我一直在想，如何从一个集合中随机取出，而不是想着如何把一个集合随机排列，然后依次取出。<br/>
-关于OrderBy方法，某些人不理解为什么返回值是一个泛型，也就是说返回什么都可以，所以经常见到的写法是：</p>
+<p>纵观第六章，或许给我们讲的不是计算机科学，作者以史论事，给我上了一堂<code>经济学</code>。<br/>
+说金钱不等于财富，讲<code>大饼谬论</code>，说程序员是目前存在的最大的手工艺人，应该最明白财富是被创造出来的。<br/>
+或许我就是他讲述中的大多数人，至少我从某方面有过这种认为。而接下来基本就将命题引入本书的关键——创业。</p>
 
-<pre><code>lst.OrderBy(i =&gt; i);
-</code></pre>
+<p>首先告诉你，你在公司里当程序员为什么比销售人员拿的钱少：<br/>
+因为大公司无法准确的测量每个员工的贡献，销售人员容易测量，而程序员，你即使很努力的工作，感觉为公司带来了很高的利润，但是这可能是因为设计师为它设计一个漂亮的外壳，营销人员让顾客相信这是值得拥有的商品，也可能是上一代产品的工作人员为这个公司树立了质量可靠的形象……</p>
 
-<p>关于排序问题，必然涉及比较器，请参见<a href="/blog/2012/11/22/winform/#ListViewSort">关于ListView排序的众多问题</a>，这里就不再啰嗦了。</p>
+<p>然后告诉你：</p>
 
-<p>OrderBy本来是没什么好说的，但是如果用TSQL或查询表达式来想，如果对多字段排序应该怎么写？如果是降序排列呢？<br/>
-如果你试着想从OrderBy中实现这些，不是不行，不是说了有比较器么，但是这就又犯了<code>在一棵树上吊死</code>的错误了。<br/>
-在LINQ方法中，对于多字段排序有<code>ThenBy</code>方法，对于降序排序有<code>OrderByDescending</code>，对于降序多字段排序有<code>ThenByDescending</code>。<br/>
-这就让人思考，为什么不在OrderBy方法中多传几个参数，或多加几个重载（在4.0中甚至可以使用可选参数）达到效果，而要写这么多不同的方法呢？</p>
+<blockquote><p>要致富，你需要两样东西：可测量性和可放大性。你的职位产生的业绩，应该是可测量的，否则你做的再多，也不会得到更多的报酬。此外，你还必须可放大性，也就是说你做出的决定能够产生巨大的效应。</p></blockquote>
 
-<p>这些缘由很多，我怕我说不到位，说的不对，这里也就不说了，能给大家带来一些思考就已经达到我要的目的了。<br/>
-是想如果当年我写下那段舒尔特方格的代码，如果觉得写的很对，没有问题，这就是最好的写法，那么也就不会有当我看到随机排序时的恍然大悟。<br/>
-带着问题去学习，向来都是最高效的。</p>
+<p>这时就告诉你，小团队等于可测量性，高科技等于可放大性，当两个做一个&amp;&amp;运算时，你就会发现，互联网创业最直接，成功率最高。（当然，现在包括了移动APP）<br/>
+然后给你说创业公司最好的下场就是被收购，而如何能让公司被收购呢，作者的答案就是用户数量。</p>
 </div>
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/blog/2012/12/22/linq-count-2" title="从LINQ的Count方法说起-2">&larr; 上一页</a></li>
+        <li class="prev"><a href="/blog/2012/12/23/linq-count-3" title="从LINQ的Count方法说起-3">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
-        <li class="next"><a href="/blog/2012/12/31/hackers-and-painters-6" title="《黑客与画家》读书笔记 第六章">下一页 &rarr;</a></li>
+        <li class="next disabled"><a>下一页 &rarr;</a>
       
       </ul>
     </div>
@@ -220,7 +182,7 @@ for (int i = 0; i &lt; Schulte_Grid.Children.Count; i++)
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-12-23</span>
+    <div class="date"><span>2012-12-31</span>
   </div>
 
   
@@ -232,9 +194,7 @@ for (int i = 0; i &lt; Schulte_Grid.Children.Count; i++)
 
   
      
-    	<li><a href="/tags.html#C#-ref">C# <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#LINQ-ref">LINQ <span>3</span></a></li>
+    	<li><a href="/tags.html#创业-ref">创业 <span>1</span></a></li>
     
   
 
