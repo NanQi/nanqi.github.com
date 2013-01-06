@@ -17,7 +17,7 @@ input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-se
 textarea{overflow:auto;vertical-align:top;}
 .clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";}
 .clearfix:after{clear:both;}
-body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;color:#333333;background-color:#ffffff;}
+body{margin:0;font-family:Verdana,"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;color:#333333;background-color:#ffffff;}
 a{color:#0088cc;text-decoration:none;}
 a:hover{color:#005580;text-decoration:underline;}
 .row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
@@ -485,7 +485,7 @@ button.btn.small,input[type="submit"].btn.small{*padding-top:3px;*padding-bottom
 .btn-navbar .icon-bar+.icon-bar{margin-top:3px;}
 .nav-collapse.collapse{height:auto;}
 .navbar .brand:hover{text-decoration:none;}
-.navbar .brand{float:left;display:block;padding:8px 20px 12px;margin-left:-20px;font-size:20px;font-weight:200;line-height:1;color:#ffffff;}
+.navbar .brand{float:left;display:block;padding:8px 20px 12px;margin-left:-20px;font-size:20px;font-weight:200;line-height:1;color:#dddddd;}
 .navbar .navbar-text{margin-bottom:0;line-height:40px;color:#999999;}.navbar .navbar-text a:hover{color:#ffffff;background-color:transparent;}
 .navbar .btn,.navbar .btn-group{margin-top:5px;}
 .navbar .btn-group .btn{margin-top:0;}

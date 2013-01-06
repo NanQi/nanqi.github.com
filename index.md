@@ -24,21 +24,29 @@ tagline: 神棍是一种生活态度
 
 <ul class="posts">
 {% for post in site.posts %}
-<li><span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>{{post.lasttime | date: "(%Y-%m-%d)"}}</li>
+<li>
+    <span>{{ post.date | date: "%Y-%m-%d" }}</span> &raquo;
+    <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
+    {% if post.author %}
+    <i title="作者：{{post.author}}" class="icon-user"></i>
+    {% endif %}
+    {% if post.lasttime %}
+    <i title="最后修改时间：{{post.lasttime | date: "%Y-%m-%d"}}" class="icon-pencil"></i>
+    {% endif %}
+</li>
 {% endfor %}
 </ul>
 </div>
 
 <div class="span4">
-<div class="well">
 <h3>分类列表:</h3>
 
 <ul class="tag_box inline">
   {% assign categories_list = site.categories %}
   {% include JB/categories_list %}
 </ul>
-</div>
-<div class="well">
+
+<hr>
 
 <h3>标签列表:</h3>
 
@@ -46,6 +54,5 @@ tagline: 神棍是一种生活态度
 {% assign tags_list = site.tags %}
 {% include JB/tags_list %}
 </ul>
-</div>
 </div>
 </div>
