@@ -3,7 +3,7 @@ layout: post
 title: "《黑客与画家》读书笔记 第六章"
 description: "《黑客与画家》读书笔记"
 category: 读书笔记
-tags: [创业]
+tags: [读书笔记, 创业]
 ---
 {% include JB/setup %}
 
