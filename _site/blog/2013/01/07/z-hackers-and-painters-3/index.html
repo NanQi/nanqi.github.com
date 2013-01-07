@@ -3,8 +3,8 @@
 <html lang="ZH-CN">
   <head>
     <meta charset="utf-8">
-    <title>从LINQ的Count方法说起-1</title>
-    <meta name="description" content="从LINQ的Count方法说起-1">
+    <title>《黑客与画家》（三）</title>
+    <meta name="description" content="第三章 不能说的话">
     <meta name="author" content="NanQi">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -140,8 +140,10 @@
         
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>从LINQ的Count方法说起-1
+  <h1>《黑客与画家》（三）
     <small>
+      
+        ——Mr. 飞
       
     </small>
   </h1>
@@ -153,81 +155,25 @@
       
         <blockquote>
           <p class="text-info">非本人所写，特此标明</p>
-          ——原文链接：<a href="" target="_blank"></a>
+          ——原文链接：<a href="http://user.qzone.qq.com/279623753/blog/1357496659" target="_blank">http://user.qzone.qq.com/279623753/blog/1357496659</a>
         </blockquote>
       
-      <h2>几句闲扯</h2>
+      <p>你最好找一些信得过的朋友，与他们畅所欲言，无所不谈，这样不但可以获得新的观点，还可以用来选择朋友。能够一起谈论“异端邪说”并且不会因此气急败坏的人，就应该是你应该认识的朋友。” 读到这段时我想我是不是幸运的呢，至少有那么个人对你所为都不惊讶都理解。我在之前说过三个故事：1.穿着演出服的卓别林；2.张良借钱；3.你喜欢我吗。我只是通过这三个故事来说明我性格。也正是基于这种性格我对那个谁什么靖竹的才喜欢吧。我不知道别人身边有没有如他这般的人，但我身边是再找不到这么神经的另一个吧。你大老远去找他。他给你来一句:咱们见个面了你就回去，我去上我的班。即使如咱那马良这厮神经患者也做不到如此，更别说一般人呢。我是幸运的吗？</p>
 
-<hr />
+<p>我之前给某人说这本书有颠覆我好多观点的倾向，正是基于这一章。这一章总的来说让我有种欲评但不得的感觉。因为我把文中的随便一个观点拎出来都有种认同的感觉，即使是错的，只要换个角度就变成对的了。这也是我现在变得基本很少对事物做出评价的原因，即使评价也只是来一句：这个不奇怪。正如那话说;在现今社会，发生什么都奇怪。你在这个角度想不通，换一个方位自然就说的通了。关于文中讲到如何说该说的话，如何讲出不该说的话，我不在这做重复。每个人都有每个人的理解，我不能把我的理解施加与你身上，这不是游戏中的秘法鞋，可以集体补蓝。你想知道到这种方式看我的读书笔记是看不出来的，需得自己去领会。好了，接下来我就没办法写了，因为我逻辑思维能力有限实在不知道如何把整章所讲的观点以及自己思维有条理的表述出来。你辩证的去看待事物，结果就是怎么看都是对的，怎么看又多事错的。先结束。</p>
 
-<p>在我学习LINQ时，确实感觉很爽。<br/>
-但是时间久了，慢慢也就不那么在意了。但是周围朋友总是记得<code>我会使用LINQ</code>编程。<br/>
-记得初中时候学几何，有一个已知三角形边长求面积的题，而我正巧知道<a href="http://baike.baidu.com/view/1279.htm">海伦公式</a>，之后凡是碰到可以使用此公式的题，同学都想起我会做，仿佛那公式应该以我的名字命名一样……<br/>
-某人问我有没有学习LINQ的资料，我实在说不出，因为我从来都没有系统的去学过LINQ。我基本只是使用几个IEnumerable<T>的扩展方法，要说学习也只是从某些第X版书中读过几句，平时也就在一个集合点一下然后看看各自说明。<br/>
-当然，LINQ不止于此，我也说不出到底LINQ都包含什么，什么是LINQ。</p>
-
-<blockquote><p>给一个东西，一门技术下定义，从来都不是一件简单的事。</p></blockquote>
-
-<h2>事出有因</h2>
-
-<hr />
-
-<p>事情是这样的，今天有人问我一个小问题，关于LINQ，然后我不经意间看到一行代码：</p>
-
-<pre><code>int count = lst.Where(ch =&gt; char.IsNumber(ch)).Count();
-</code></pre>
-
-<p>代码读起来很简单，就是从一个char集合里找出为数字的个数。<br/>
-代码没问题，但是还有个更好的写法：</p>
-
-<pre><code>int count = lst.Count(char.IsNumber);
-</code></pre>
-
-<p>即便他不知道Count方法可以传参，那么他为什么不写成：</p>
-
-<pre><code>int count = lst.Where(char.IsNumber).Count();
-</code></pre>
-
-<p>我相信他根本就不知道这里为什么要写ch => char.IsNumber(ch)，根本就不知道这里需要的是一个方法。<br/>
-这让我想起一个男同事说一个女同事（所谓同事，都是程序猿），女的刚毕业，不怎么会，然后男的说女的写代码ToString不带括号。<br/>
-这姑且说是这个女同事不知道调用方法即使没有参数也需要带括号，或者说她根本就不知道ToString是一个方法，但是同样也说明这个男同事以为方法只能去调用（call）。<br/>
-或许简单下面的代码他会觉得很惊讶：</p>
-
-<pre><code>string[] arr = lst.Where(char.IsNumber).Select(char.ToString);
-</code></pre>
-
-<p>又或者在事件上：</p>
-
-<pre><code>delegate string GetNumberDelegate(char ch);
-event GetNumberDelegate GetNumberEvent;
-...
-this.GetNumberEvent += char.ToString;
-</code></pre>
-
-<h2>几点思考</h2>
-
-<hr />
-
-<p>我想大多数人习惯于使用ch => char.IsNumber(ch)是因为这样感觉很好理解，程序可以<code>读出来</code>。是的，写LINQ最爽的一点就是这里了。<br/>
-比如说使用Where方法，知道集合是一个char集合，那么ch很自然的可以当做char集合中每个元素，=>之后写下对每个元素的判断，很好理解，用起来很舒服。<br/>
-但是切莫执迷于表像而偏离本质。<br/>
-说起函数当做参数传递，记起曾经在封装一个日历控件的时候遇到一个问题：需要在已提交报表、未提交报表和还没到的日子分颜色：</p>
-
-<p><img src="/image/ucCalendar.gif" alt="日历控件" /></p>
-
-<p>但是关于颜色问题，修改了好多次，最后干脆我给封装的控件增加一个Func&lt;string, Color>，根据给定的类型（提交或未提交）去给定颜色。<br/>
-最后我要说的是我本来初衷不是写好多人不知道<code>函数也是一个对象</code>，不知道函数也可以去传递，但是写一下给写跑题了，干脆就继续写下去。而原本我是想说说几个LINQ扩展方法的先后问题，留在下一篇博客中说吧。</p>
+<p>最后我很喜欢“如何自己就是潮水的一部分，怎么能看见潮水的方向呢”这句话。</p>
 
     </div>
     <hr>
     <div class="pagination">
       <ul>
       
-        <li class="prev"><a href="/blog/2012/12/16/unmain" title="其实根本不用混淆你的代码">&larr; 上一页</a></li>
+        <li class="prev"><a href="/blog/2013/01/07/z-hackers-and-painters-2" title="《黑客与画家》（二）">&larr; 上一页</a></li>
       
         <li><a href="/archive.html">列表</a></li>
       
-        <li class="next"><a href="/blog/2012/12/22/linq-count-2" title="从LINQ的Count方法说起-2">下一页 &rarr;</a></li>
+        <li class="next"><a href="/blog/2013/01/07/z-hackers-and-painters-4" title="《黑客与画家》（四）">下一页 &rarr;</a></li>
       
       </ul>
     </div>
@@ -256,7 +202,7 @@ this.GetNumberEvent += char.ToString;
   </div>
   <div class="span4">
     <h4>Published</h4>
-    <div class="date"><span>2012-12-20</span>
+    <div class="date"><span>2013-01-07</span>
   </div>
 
   
@@ -268,9 +214,7 @@ this.GetNumberEvent += char.ToString;
 
   
      
-    	<li><a href="/tags.html#C#-ref">C# <span>6</span></a></li>
-     
-    	<li><a href="/tags.html#LINQ-ref">LINQ <span>3</span></a></li>
+    	<li><a href="/tags.html#读书笔记-ref">读书笔记 <span>5</span></a></li>
     
   
 

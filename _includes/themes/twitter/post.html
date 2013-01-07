@@ -1,11 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <div class="page-header">
-  <h1>{{ page.title }}</h1>
+  <h1>{{ page.title }}
+    <small>
+      {% if page.author %}
+        ——{{page.author}}
+      {% endif %}
+    </small>
+  </h1>
 </div>
 
 <div class="row">
   <div class="span8">
-    <div id="divPost">{{ content }}</div>
+    <div id="divPost">
+      {% if page.url %}
+        <blockquote>
+          <p class="text-info">非本人所写，特此标明</p>
+          ——原文链接：<a href="{{page.OriginalLink}}" target="_blank">{{page.OriginalLink}}</a>
+        </blockquote>
+      {% endif %}
+      {{ content }}
+    </div>
     <hr>
     <div class="pagination">
       <ul>
