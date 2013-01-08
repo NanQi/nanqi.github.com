@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<div class="page-header">
+  <h1>{{ page.title }}
+    <small>
+      {% if page.author %}
+        ——{{page.author}}
+      {% endif %}
+    </small>
+  </h1>
+</div>
+
+<div class="row">
+  <div class="span8">
+    <div id="divPost">
+      {% if page.OriginalLink tq;'}
+        <blockquote>
+          <p class="text-info">非本人所写，特此标明</p>
+          ——原文链接：<a href="{{page.OriginalLink}}" target="_blank">{{page.OriginalLink}}</a>
+        </blockquote>
+      {% endif %}
+      {{ content }}
+    </div>
+    <hr>
+    <div class="pagination">
+      <ul>
+      {% if page.previous %}
+        <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; 上一页</a></li>
+      {% else %}
+        <li class="prev disabled"><a>&larr; 上一页</a></li>
+      {% endif %}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">列表</a></li>
+      {% if page.next %}
+        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">下一页 &rarr;</a></li>
+      {% else %}
+        <li class="next disabled"><a>下一页 &rarr;</a>
+      {% endif %}
+      </ul>
+    </div>
+    <hr>
+    {% include JB/comments %}
+  </div>
+  <div class="span4">
+    <h4>Published</h4>
+    <div class="date"><span>{{ page.date | date: "%Y-%m-%d" }}</span>
+  </div>
+
+  {% unless page.tags == empty %}
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    {% assign tags_list = page.tags %}
+    {% include JB/tags_list %}
+    </ul>
+  {% endunless %}
+  </div>
+</div>

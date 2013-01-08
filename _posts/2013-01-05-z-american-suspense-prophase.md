@@ -2,8 +2,8 @@
 layout: post
 title: "美国暂记 （一）"
 description: "美国暂记——前期、掠影"
-author: "nanxi joy"
-OriginalLink: "http://user.qzone.qq.com/382972072/blog/1357350703"
+author: "行恩"
+OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a266010153ia.html"
 category: 非本人所写
 tags: [回忆]
 ---

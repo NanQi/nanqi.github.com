@@ -2,8 +2,8 @@
 layout: post
 title: "美国暂记 （三）"
 description: "美国暂记——后续"
-author: "nanxi joy"
-OriginalLink: "http://user.qzone.qq.com/382972072/blog/1357463961"
+author: "行恩"
+OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a266010154k8.html"
 category: 非本人所写
 tags: [回忆]
 ---
