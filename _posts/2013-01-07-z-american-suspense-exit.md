@@ -1,15 +1,15 @@
 ---
 layout: post
 title: "美国暂记 （四）"
-description: "美国暂记——登机"
+description: "美国暂记——出境"
 author: "行恩"
 OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a266010155d6.html"
-category: 非本人所写
+category: 似是故人归
 tags: [回忆]
 ---
 {% include JB/setup %}
 
-##【登机】
+##【出境】
 
 北京的最后一个念想，便是地铁。
 

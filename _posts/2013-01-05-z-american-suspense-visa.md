@@ -4,7 +4,7 @@ title: "美国暂记 （二）"
 description: "美国暂记——签证"
 author: "行恩"
 OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a266010153um.html"
-category: 非本人所写
+category: 似是故人归
 tags: [回忆]
 ---
 {% include JB/setup %}
