@@ -5,7 +5,7 @@ http://nanqi.info/categories.html
 http://nanqi.info/index.html
 http://nanqi.info/logo.html
 http://nanqi.info/pages.html
-http://nanqi.info/Questions.html
+http://nanqi.info/questions.html
 http://nanqi.info/sitemap.txt
 http://nanqi.info/tags.html
 

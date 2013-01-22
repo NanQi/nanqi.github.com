@@ -10,7 +10,7 @@ group: navigation
 ##更新历史：
 ---
 
-* *2012-11-27* 创建文章，[cygwin中文乱码][1]，[jekyll导航栏排序][2]
+* 2012-11-27 &raquo; 创建文章，[cygwin中文乱码][1]，[jekyll导航栏排序][2]
 
 ##问题列表
 ---
@@ -44,5 +44,7 @@ group: navigation
 
 或许这些使用什么规则可以排序吧，但是我不知道怎么用，尝试了在所有地方都`Posts By XXX`但是还是不对。  
 并且我在此看不出有什么规律。  
+
+---
 
 {% include JB/comments %}
