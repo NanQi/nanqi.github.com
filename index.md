@@ -19,7 +19,7 @@ tagline: 神棍是一种生活态度
 </p>
 
 
-<h2>文章列表:</h2>
+<h2>文章列表：</h2>
 <hr>
 
 <ul class="posts">
@@ -39,7 +39,34 @@ tagline: 神棍是一种生活态度
 </div>
 
 <div class="span4">
-<h3>分类列表:</h3>
+
+<h3>关于：</h3>
+
+<br/>
+
+<div class="row-fluid">
+<div class="span6">
+<img src="/image/me/avatar.jpg" class="img-polaroid"/>
+</div>
+<div class="span4 offset1">
+  <ul class="unstyled">
+    <li>南琦</li>
+    <li>英文名：NanQi</li>
+    <li>偏执，狂妄</li>
+    <li>程序员，技术宅</li>
+    <li>自学成才</li>
+    <li>爱好过于广泛</li>
+    <li>没有女朋友</li>
+  </ul>
+  
+  <p>
+    目前就职某软件企业，金融行业，做各种工具，使用C#。
+  </p>
+</div>
+</div>
+<hr>
+
+<h3>分类列表：</h3>
 
 <ul class="tag_box inline">
   {% assign categories_list = site.categories %}
@@ -48,7 +75,7 @@ tagline: 神棍是一种生活态度
 
 <hr>
 
-<h3>标签列表:</h3>
+<h3>标签列表：</h3>
 
 <ul class="tag_box inline">
 {% assign tags_list = site.tags %}

@@ -1,11 +1,9 @@
 ---
 layout: page
-title: "Questions"
+title: "问题"
 group: navigation
 ---
 {% include JB/setup %}
-
-    SELECT * FROM questions ORDER BY time
 
 这里列出我现在存在的一些问题，尚未解决的，希望某位好心人在看到了可以帮忙解决一下。  
 

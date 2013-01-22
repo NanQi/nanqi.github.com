@@ -4,7 +4,7 @@
  <title>南琦的博客</title>
  <link href="http://nanqi.info/atom.xml" rel="self"/>
  <link href="http://nanqi.info"/>
- <updated>2013-01-17T10:56:34+00:00</updated>
+ <updated>2013-01-22T03:00:44+00:00</updated>
  <id>http://nanqi.info</id>
  <author>
    <name>NanQi</name>
@@ -847,8 +847,8 @@
 
 &lt;p&gt;话说我曾经弄过WP应用，做了个很简单的一个游戏——&lt;a href=&quot;http://baike.baidu.com/view/2450431.htm&quot;&gt;舒尔特方格&lt;/a&gt;：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/image/SchulteGrid1.png&quot; alt=&quot;舒尔特方格1&quot; /&gt;
-&lt;img src=&quot;/image/SchulteGrid2.png&quot; alt=&quot;舒尔特方格2&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/linq/SchulteGrid1.png&quot; alt=&quot;舒尔特方格1&quot; /&gt;
+&lt;img src=&quot;/image/linq/SchulteGrid2.png&quot; alt=&quot;舒尔特方格2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;（由于我实在找不到原图了，只能拿这个有水印的图片）
 我要说的不是这个游戏，而是一个简单的不能再简单的问题——&lt;strong&gt;如何把25各数字随机排列在方格中&lt;/strong&gt;&lt;br/&gt;
@@ -1053,7 +1053,7 @@ this.GetNumberEvent += char.ToString;
 但是切莫执迷于表像而偏离本质。&lt;br/&gt;
 说起函数当做参数传递，记起曾经在封装一个日历控件的时候遇到一个问题：需要在已提交报表、未提交报表和还没到的日子分颜色：&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/image/ucCalendar.gif&quot; alt=&quot;日历控件&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/linq/ucCalendar.gif&quot; alt=&quot;日历控件&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;但是关于颜色问题，修改了好多次，最后干脆我给封装的控件增加一个Func&amp;lt;string, Color&gt;，根据给定的类型（提交或未提交）去给定颜色。&lt;br/&gt;
 最后我要说的是我本来初衷不是写好多人不知道&lt;code&gt;函数也是一个对象&lt;/code&gt;，不知道函数也可以去传递，但是写一下给写跑题了，干脆就继续写下去。而原本我是想说说几个LINQ扩展方法的先后问题，留在下一篇博客中说吧。&lt;/p&gt;
@@ -1760,7 +1760,7 @@ KeyToGrab(D), WithModifier(Win), WithAction(ExecCommand), DoThis(@BBCore.Minimiz
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;img src=&quot;/image/speech.png&quot; alt=&quot;淘宝语音搜索&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/image/web/speech.png&quot; alt=&quot;淘宝语音搜索&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;本来以为是很复杂的实现，没有太过在意。&lt;br/&gt;
 后来发现在Chrome中有，但是IE中却没有，网上查了下，发现实现很简单，几乎只需要一句代码：&lt;/p&gt;
