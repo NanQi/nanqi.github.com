@@ -33,25 +33,25 @@ tags: [回忆]
 
 旧金山联合广场标志
 
-![旧金山联合广场标志](/image/american-suspense/DSC03339.JPG)
+![旧金山联合广场标志](/image/american-suspense/DSC03339.jpg)
 
 旧金山联合广场标志及摩西购物
 
-![旧金山联合广场标志及摩西购物](/image/american-suspense/DSC03341.JPG)
+![旧金山联合广场标志及摩西购物](/image/american-suspense/DSC03341.jpg)
 
 旧金山联合广场一角。
 
 > 在旧金山市区，可以以联合广场作为一个中心点。它的位置相当于武威的文化广场。
 
-![旧金山联合广场](/image/american-suspense/DSC03349.JPG)
+![旧金山联合广场](/image/american-suspense/DSC03349.jpg)
 
-![旧金山联合广场](/image/american-suspense/DSC03347.JPG)
+![旧金山联合广场](/image/american-suspense/DSC03347.jpg)
 
-![旧金山联合广场](/image/american-suspense/DSC03351.JPG)
+![旧金山联合广场](/image/american-suspense/DSC03351.jpg)
 
 铛铛车
 
-![铛铛车](/image/american-suspense/DSC03345.JPG)
+![铛铛车](/image/american-suspense/DSC03345.jpg)
 
 第二天，负责全亚洲学生的端木先生，为我们所有亚洲学生特派苹果专车，接送我们观光。
 
@@ -67,17 +67,17 @@ tags: [回忆]
 
 步入斯坦福大学之路。
 
-![步入斯坦福大学之路。](/image/american-suspense/DSC03361.JPG)
+![步入斯坦福大学之路。](/image/american-suspense/DSC03361.jpg)
 
 宽阔的棕榈树大道，走到尽头就可到达四角广场。广场是由设计纽约中央公园的奥姆斯特德（Frederic Law Olmstead)规划设计的，是游览斯坦福大学校园的中心地带。*这些是后来查阅资料知道的。*
 
 斯坦福大学映入眼帘。
 
-![斯坦福大学映入眼帘。](/image/american-suspense/DSC03362.JPG)
+![斯坦福大学映入眼帘。](/image/american-suspense/DSC03362.jpg)
 
-![斯坦福大学映入眼帘。](/image/american-suspense/PICT0447.JPG)
+![斯坦福大学映入眼帘。](/image/american-suspense/PICT0447.jpg)
 
-![斯坦福大学映入眼帘。](/image/american-suspense/DSC03363.JPG)
+![斯坦福大学映入眼帘。](/image/american-suspense/DSC03363.jpg)
 
 这时你能够很清楚地看见那座非常美丽的塔。
 
@@ -105,7 +105,7 @@ tags: [回忆]
 
 *值得一说的是，普林斯顿大学对女性教育的重视，以及该校的校训是“她因上帝的力量而繁荣”。*
 
-![斯坦福大学](/image/american-suspense/DSC03364.JPG)
+![斯坦福大学](/image/american-suspense/DSC03364.jpg)
 
 斯坦福大学足以与美国东部的常春藤名校相抗衡，前面说了，是因为斯坦福大学的建立，所以进而带动了帕罗奥多的发展，而著名的硅谷的中心就在帕罗奥多。所以，斯坦福大学几乎象征着美国21世纪的科技精神力量。而乔布斯也曾在斯坦福大学多次讲话，还留下了著名的“stay hungry，stay foolish”的名言。
 
@@ -117,30 +117,30 @@ tags: [回忆]
 
 斯坦福大学雕像。他们形态各异。但在我的眼里，他们都近似一种悲伤。我不知道为什么我会有这个感觉。
 
-![斯坦福大学雕像](/image/american-suspense/DSC03366.JPG)
+![斯坦福大学雕像](/image/american-suspense/DSC03366.jpg)
 
 
 后来经过查阅知道这些雕像是罗丹雕塑。因为我在想，罗丹或许是一个内心悲悯良善的人，懂得发觉人性中最为沉痛与哀伤的一面，否则，怎么会将这样深刻的情感，通过雕塑呈现出来，而且是这样能够激发和流淌人体全身血脉的深刻情感。
 
 
 斯坦福纪念教堂（Memorial Church)
-![斯坦福纪念教堂](/image/american-suspense/DSC03372.JPG)
+![斯坦福纪念教堂](/image/american-suspense/DSC03372.jpg)
 
 斯坦福纪念教堂兴建于1903年，是浪漫主义风格的杰作。它也是该校具有代表意义的建筑。
 
 
 斯坦福大学校园内
-![斯坦福](/image/american-suspense/DSC03368.JPG)
+![斯坦福](/image/american-suspense/DSC03368.jpg)
 
-![斯坦福](/image/american-suspense/DSC03371.JPG)
+![斯坦福](/image/american-suspense/DSC03371.jpg)
 
-![斯坦福](/image/american-suspense/DSC03381.JPG)
+![斯坦福](/image/american-suspense/DSC03381.jpg)
 
-![斯坦福](/image/american-suspense/PICT0456.JPG)
+![斯坦福](/image/american-suspense/PICT0456.jpg)
 
-![斯坦福](/image/american-suspense/PICT0462.JPG)
+![斯坦福](/image/american-suspense/PICT0462.jpg)
 
-![斯坦福](/image/american-suspense/PICT0469.JPG)
+![斯坦福](/image/american-suspense/PICT0469.jpg)
 
 斯坦福大学的建筑基本上都是这样的，能够清楚地感受到十七世纪西班牙式的传道堂式风格。我坐在树荫下，看着往来的各色人种，那些肤色不一的孩子，着装与行为都及其令我羡慕。我闭上眼睛，想象自己是这个学校的学生。
 
@@ -161,7 +161,7 @@ tags: [回忆]
 
 个性和独特是每个人区别与彼此不同的表现，在美国大大强调的同时，中国却在极力阻止，太过传统的一切，将人的思想和步调裹住，一旦有个性和独特的人，每个人都想改造他，把他重新变的和他们那些流俗的人一样。
 
-![斯坦福](/image/american-suspense/PICT0492.JPG)
+![斯坦福](/image/american-suspense/PICT0492.jpg)
 
 这个地方你们可能没印象。其实起初我也没有印象。直到我从美国回来不久以后看了《毕业生》，才发现电影中的学校就是斯坦福大学。镜头照到这个喷水池处，我才恍然，原来我也曾在这里驻足过。
 
@@ -169,41 +169,41 @@ tags: [回忆]
 
 校园内锁自行车的地方。
 
-![斯坦福](/image/american-suspense/DSC03421.JPG)
+![斯坦福](/image/american-suspense/DSC03421.jpg)
 
 斯坦福大学教学内部
 
-![斯坦福](/image/american-suspense/DSC03445.JPG)
-![斯坦福](/image/american-suspense/DSC03448.JPG)
-![斯坦福](/image/american-suspense/DSC03449.JPG)
-![斯坦福](/image/american-suspense/DSC03453.JPG)
+![斯坦福](/image/american-suspense/DSC03445.jpg)
+![斯坦福](/image/american-suspense/DSC03448.jpg)
+![斯坦福](/image/american-suspense/DSC03449.jpg)
+![斯坦福](/image/american-suspense/DSC03453.jpg)
 
 
 斯坦福大学地图
 
-![斯坦福](/image/american-suspense/DSC03457.JPG)
+![斯坦福](/image/american-suspense/DSC03457.jpg)
 
 校园内乱窜的美国小朋友。非常具有朋克气息。我非常喜欢这种小孩儿。哈哈。
 
-![斯坦福](/image/american-suspense/DSC03456.JPG)
+![斯坦福](/image/american-suspense/DSC03456.jpg)
 
 
 这张照片我曾获过奖。
 
-![斯坦福](/image/american-suspense/DSC03462.JPG)
+![斯坦福](/image/american-suspense/DSC03462.jpg)
 
 这个地方也是斯坦福非常著名的景点。
 
-![斯坦福](/image/american-suspense/DSC03463.JPG)
+![斯坦福](/image/american-suspense/DSC03463.jpg)
 
 这张图上的图腾像极云南纳西的神图腾。我想可能是美国土著印第安的图腾。但是未经过证实。至今我也不知道它代表的真实意图。
 
-![斯坦福](/image/american-suspense/P1010112.JPG)
+![斯坦福](/image/american-suspense/P1010112.jpg)
 
 体育场
 
-![斯坦福](/image/american-suspense/DSC03467.JPG)
+![斯坦福](/image/american-suspense/DSC03467.jpg)
 
 离开的时候我对自己说，斯坦福象征一种精神。但愿能够再来这里。再见。
 
-![斯坦福](/image/american-suspense/DSC03471.JPG)
+![斯坦福](/image/american-suspense/DSC03471.jpg)
