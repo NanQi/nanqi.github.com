@@ -3,7 +3,7 @@ layout: post
 title: "美国暂记 （九）"
 description: "美国暂记——苹果专车——斯坦福"
 author: "行恩"
-OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a266010153ia.html"
+OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a26601015p1u.html"
 category: 似是故人归
 tags: [回忆]
 ---
