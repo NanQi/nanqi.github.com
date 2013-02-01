@@ -3,7 +3,7 @@ layout: post
 title: "美国暂记 （十）"
 description: "美国暂记——金门大桥"
 author: "行恩"
-OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a26601015p1u.html"
+OriginalLink: "http://blog.sina.com.cn/s/blog_70c7a26601015p9j.html"
 category: 似是故人归
 tags: [回忆]
 ---
