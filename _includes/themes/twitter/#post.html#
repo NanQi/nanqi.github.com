@@ -9,10 +9,10 @@
   </h1>
 </div>
 
-<div class="row">
-  <div class="span8">
+<div class="row-fluid">
+  <div class="span9">
     <div id="divPost">
-      {% if page.OriginalLink tq;'}
+      {% if page.OriginalLink %}
         <blockquote>
           <p class="text-info">非本人所写，特此标明</p>
           ——原文链接：<a href="{{page.OriginalLink}}" target="_blank">{{page.OriginalLink}}</a>
@@ -39,10 +39,11 @@
     <hr>
     {% include JB/comments %}
   </div>
-  <div class="span4">
+  <div class="span3">
     <h4>Published</h4>
-    <div class="date"><span>{{ page.date | date: "%Y-%m-%d" }}</span>
-  </div>
+    <div class="date">
+      <span>{{ page.date | date: "%Y-%m-%d" }}</span>
+    </div>
 
   {% unless page.tags == empty %}
     <h4>Tags</h4>
