@@ -33,6 +33,9 @@ Usage:
                     {% if node.author %}
                         <i title="作者：{{node.author}}" class="icon-user"></i>
                     {% endif %}
+                    {% if node.sourcecode %}
+                        <i title="有源码" class="icon-list-alt"></i>
+                    {% endif %}
                 </a>
             </li>
       	{% else %}
@@ -41,6 +44,9 @@ Usage:
                 {{node.title}}
                 {% if node.author %}
                     <i title="作者：{{node.author}}" class="icon-user"></i>
+                {% endif %}
+                {% if node.sourcecode %}
+                    <i title="有源码" class="icon-list-alt"></i>
                 {% endif %}
             </a>
         </li>

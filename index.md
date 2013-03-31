@@ -24,6 +24,9 @@ tagline: 神棍是一种生活态度
     {% if post.author %}
     <i title="作者：{{post.author}}" class="icon-user"></i>
     {% endif %}
+    {% if post.sourcecode %}
+        <i title="有源码" class="icon-list-alt"></i>
+    {% endif %}
     {% if post.lasttime %}
     <i title="最后修改时间：{{post.lasttime | date: "%Y-%m-%d"}}" class="icon-pencil"></i>
     {% endif %}

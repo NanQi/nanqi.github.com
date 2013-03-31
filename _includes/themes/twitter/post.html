@@ -22,6 +22,12 @@
         </blockquote>
       {% endif %}
       {{ content }}
+      {% if page.sourcecode %}
+        <blockquote>
+          <strong>源码地址：</strong><a href="{{page.sourcecode}}" target="_blank">{{page.sourcecode}}</a>
+        </blockquote>
+      {% endif %}
+
     </div>
     <hr>
     <div class="pagination">
