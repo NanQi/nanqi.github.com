@@ -2,6 +2,7 @@
 layout: post
 title: "SQL语句生成——界面操作"
 description: "SQL语句生成，界面拖拽操作"
+sourcecode: https://github.com/NanQi/demo/tree/master/SQLBuilderDemo
 category: demo
 tags: [C#, WinForm]
 ---
