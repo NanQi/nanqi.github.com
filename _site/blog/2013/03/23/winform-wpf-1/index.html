@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="ZH-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>闲话WinFrom与WPF(1)</title>
+    <meta name="description" content="本篇主要整理WPF中对应WinForm中名称的一些变动">
+    <meta name="author" content="NanQi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/prettify.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/docs.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">南琦的博客</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              
+              
+              
+
+
+  
+    
+      
+      	
+      	<li>
+            <a href="/archive.html">
+                归档
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/categories.html">
+                分类
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/MyProgram.html">
+                我的软件
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/questions.html">
+                问题
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/tags.html">
+                标签
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        
+<?xml version="1.0" encoding="utf-8"?>
+<div class="page-header">
+  <h1>闲话WinFrom与WPF(1)
+    <small>
+      
+      
+          差别篇——名称
+      
+    </small>
+  </h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span9">
+    <div id="divPost">
+      
+      <p>2012年6月，我曾准备连载这个话题<a href="http://www.cnblogs.com/nanqi/archive/2012/06/16/2551871.html">闲话WinFrom与WPF</a>，最后半途而废。<br/>
+此时想起，算是零星整理，毕竟如我等从WinForm转到WPF的大有人在，一个框架的学习成本太高，写在这里，对自己算是一个备忘，对他人希望有所帮助。</p>
+
+<p>本人刚从WinForm转换倒WPF时，最烦的就是各种属性变名字的问题，感觉在这上面浪费时间真是太不划算。虽说换更正规的名字，更符合规范的名字有好处，但有时往往需要查找半天才能解决。<br/>
+其实称作换名字，往往根本不是仅仅换个名字的问题。</p>
+
+<p><em>这篇博客会一直更新</em></p>
+
+<h3>Enabled -> IsEnabled</h3>
+
+<hr />
+
+<p>如这种属性名更换的很多，WPF对于一些Boolean类型的属性会加Is前缀，来表达“是否”的概念，这当然是一种好的命名方式，但是同时你也会发现，也有不少同是Boolean类型的没有加Is，所以不能什么一棍子打死，不要写属性的时候，发现是Boolean类型，统统都加Is前缀。<br/>
+当然没有加Is前缀可能也有名称冲突的问题，比如说UIElement有一个IsFocused的依赖属性来表示当前元素是否有焦点，那么一个元素是否能获得焦点的名字就必须改一个，不能叫做IsFocusable，而是直接叫Focusable。</p>
+
+<h3>Visible -> Visibility</h3>
+
+<hr />
+
+<p>这个属性的改变和布局密切相关，将不显示分为保留与不保留布局空间。<br/>
+关于这个问题由来已久，这样改肯定有这样改的好处，但是往往形容一个元素的显示与否，都使用Boolean，这样就衍生出一个几乎所有项目里都有的一个转换器，并且名称都起的大同小异，如：BooleanToVisibilityConverter。</p>
+
+<h3>DropDownStyle -> IsEditable</h3>
+
+<hr />
+
+<p>在ASP.NET里，ComboBox叫DorpDownList，还能让我接受，但是WPF中把这个属性改为IsEditable又是为何？或许觉得ComboBox不需要第三个状态，但是这么一改，让我可是一顿好找啊，希望众位别犯我一样的错误。</p>
+
+<h3>HorizontalAlignment 与 TextAlignment</h3>
+
+<hr />
+
+<p>我知道这两个概念不一样，但是我不相信只有我一个人会同时用这两个枚举，令我想不通的主要还是为何两个枚举的值不一样？</p>
+
+<p><strong>HorizontalAlignment</strong></p>
+
+<pre><code>public enum HorizontalAlignment
+{
+    Left = 0,
+    Center = 1,
+    Right = 2,
+    Stretch = 3,
+}
+</code></pre>
+
+<p><strong>TextAlignment</strong></p>
+
+<pre><code>public enum TextAlignment
+{
+    Left = 0,
+    Right = 1,
+    Center = 2,
+    Justify = 3,
+}
+</code></pre>
+
+<p>或许真的我用法不对，我可能只是让其<code>文本</code>右对齐，而不是应该让其在<code>父容器</code>右对齐。</p>
+
+      
+
+    </div>
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/blog/2013/03/17/wwdc07-1" title="WWDC07 （一）">&larr; 上一页</a></li>
+      
+        <li><a href="/archive.html">列表</a></li>
+      
+        <li class="next"><a href="/blog/2013/03/29/winform-wpf-2" title="闲话WinFrom与WPF(2)">下一页 &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'nanqi'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  <div class="span3">
+    <h4>Published</h4>
+    <div class="date">
+      <span>2013-03-23</span>
+    </div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#C#-ref">C# <span>13</span></a></li>
+     
+    	<li><a href="/tags.html#WPF-ref">WPF <span>3</span></a></li>
+     
+    	<li><a href="/tags.html#闲话WinFrom与WPF-ref">闲话WinFrom与WPF <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; NanQi 2012 - 2013
+          参考 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+          源码托管在 <a href="https://github.com/nanqi">NanQi Github</a> 版权声明 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">CC BY-NC-SA 3.0</a>
+          <script src="http://s95.cnzz.com/stat.php?id=4758074&web_id=4758074" language="JavaScript"></script>
+        </p>
+      </footer>
+
+    <script src="/assets/themes/twitter/js/jquery.js"></script>
+    <script src="/assets/themes/twitter/js/prettify.js"></script>
+    <script src="/assets/themes/twitter/js/holder.js"></script>
+    <script src="/assets/themes/twitter/bootstrap/js/bootstrap.min.js"></script>
+    </div> <!-- /container -->
+
+    <script type="text/javascript">
+        $(window).load(function () {
+                $("pre").addClass("prettyprint linenums");
+                prettyPrint();
+        })
+    </script>
+
+    
+  </body>
+</html>
+

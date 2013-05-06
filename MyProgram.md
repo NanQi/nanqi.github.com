@@ -26,6 +26,9 @@ group: navigation
 * [你是色盲吗][8]
 * [舒尔特方格][9]
 * [视觉密码][10]
+* [生命游戏][11]
+* [SQL语句生成][12]
+* [插件式开发框架][13]
 
 [1]: #War3
 [2]: #AddressBook
@@ -37,6 +40,9 @@ group: navigation
 [8]: #ColorBlindness
 [9]: #SchulteGrid
 [10]: #VisualCrypto
+[11]: #LifeGame
+[12]: #sqlbuilder
+[13]: #framework
 
 <section id="War3"/>
 ###魔兽地图
@@ -159,6 +165,10 @@ group: navigation
 语言：C#  
 回报：无
 
+灌溉游戏也是“非凡”的一个练习项目。  
+只是我把他做在了手机上面。  
+起初学习手机应用，也算是颇费工夫，这也是我唯一发布的一个应用。  
+
 ![Irrigation](/image/myprogram/Irrigation.png)
 
 下载地址：[https://github.com/NanQi/demo/tree/master/App/Irrigation](https://github.com/NanQi/demo/tree/master/App/Irrigation)
@@ -173,6 +183,9 @@ group: navigation
 语言：C#  
 回报：无
 
+当时为了参加三个应用换一部手机的活动而山寨的一个Flash游戏。  
+游戏可玩性挺高的。  
+
 ![ColorBlindness](/image/myprogram/ColorBlindness.png)
 
 下载地址：[https://github.com/NanQi/demo/tree/master/App/ColorBlindness](https://github.com/NanQi/demo/tree/master/App/ColorBlindness)
@@ -183,9 +196,12 @@ group: navigation
 ---
 
 时间：2012年4月  
-历时：3-5天  
+历时：2-5天  
 语言：C#  
 回报：无
+
+与上一个应用一样，都是为了参加活动而凑数的。  
+舒尔特方格就更加简单了，给其增加了锻炼注意力的用处也是因为实在觉得应用太过简单。  
 
 ![SchulteGrid](/image/myprogram/SchulteGrid.png)
 
@@ -197,11 +213,61 @@ group: navigation
 ---
 
 时间：2012年7月  
-历时：2-5天  
+历时：2-3天  
 语言：C#  
 回报：无
 
-![VisualCrypto](/image/myprogram/VisualCrypto.jpg)
+可以参加我的另一篇博客——[视觉密码](http://nanqi.info/blog/2012/07/10/visualcrypto/)。  
+
+![VisualCrypto](/image/VisualCrypto/VisualCrypto_5.jpg)
 
 下载地址：[https://github.com/NanQi/demo/tree/master/VisualCrypto](https://github.com/NanQi/demo/tree/master/VisualCrypto)
+
+<section id="LifeGame"/>
+###生命游戏
+
+---
+
+时间：2012年7月  
+历时：3-4天  
+语言：C#  
+回报：无
+
+可以参加我的另一篇博客——[生命游戏](http://nanqi.info/blog/2012/07/24/lifegame/)。  
+
+![VisualCrypto](/image/LifeGame/LifeGame_1.jpg)
+
+下载地址：[https://github.com/NanQi/demo/tree/master/LifeGame](https://github.com/NanQi/demo/tree/master/LifeGame)
+
+<section id="sqlbuilder"/>
+###SQL语句生成
+
+---
+
+时间：2013年2月  
+历时：1-2天  
+语言：C#  
+回报：无
+
+可以参加我的另一篇博客——[SQL语句生成——界面操作](http://nanqi.info/blog/2013/02/09/sqlbuilder-1/)。  
+
+![VisualCrypto](/image/sqlbuilder/sqlbuilder1.png)
+
+下载地址：[https://github.com/NanQi/demo/tree/master/SQLBuilderDemo](https://github.com/NanQi/demo/tree/master/SQLBuilderDemo)
+
+<section id="framework"/>
+###插件式开发框架
+
+---
+
+时间：2013年4月  
+历时：1-2天  
+语言：C#  
+回报：无
+
+可以参加我的另一篇博客——[插件式开发框架](http://nanqi.info/blog/2013/04/30/nanqi-framework/)。  
+
+![framework](/image/framework/framework1.png)
+
+下载地址：[https://github.com/NanQi/demo/tree/master/NanQi.Framework](https://github.com/NanQi/demo/tree/master/NanQi.Framework)
 
