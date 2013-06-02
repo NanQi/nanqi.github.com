@@ -4,7 +4,7 @@ title: "闲话WinFrom与WPF(3)"
 subtitle: "控件篇——CheckedListBox"
 description: "本篇主要介绍CheckedListBox控件的全选实现，由于WPF中没有CheckedListBox控件，所以这里自己简单实现一个CheckedListBox控件。鉴于此Demo为本系列文章的第一篇WPFDemo，这里着重讲述了WPF开发中重写模板的一些问题"
 sourcecode: https://github.com/NanQi/demo/tree/master/SelectDemo
-category: 备忘
+category: demo
 tags: [C#, WPF, 闲话WinFrom与WPF]
 ---
 {% include JB/setup %}

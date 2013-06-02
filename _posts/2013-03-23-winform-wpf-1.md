@@ -2,6 +2,7 @@
 layout: post
 title: "闲话WinFrom与WPF(1)"
 subtitle: "差别篇——名称"
+lasttime: 2013-05-25
 description: "本篇主要整理WPF中对应WinForm中名称的一些变动"
 category: 备忘
 tags: [C#, WPF, 闲话WinFrom与WPF]
@@ -14,7 +15,12 @@ tags: [C#, WPF, 闲话WinFrom与WPF]
 本人刚从WinForm转换倒WPF时，最烦的就是各种属性变名字的问题，感觉在这上面浪费时间真是太不划算。虽说换更正规的名字，更符合规范的名字有好处，但有时往往需要查找半天才能解决。  
 其实称作换名字，往往根本不是仅仅换个名字的问题。  
 
-*这篇博客会一直更新*
+##更新历史：
+
+---
+
+* 2013-03-23 &raquo; 创建文章
+* 2013-05-27 &raquo; 增加 StartPosition，Frozen
 
 ###Enabled -> IsEnabled
 
@@ -64,4 +70,17 @@ tags: [C#, WPF, 闲话WinFrom与WPF]
     
 或许真的我用法不对，我可能只是让其`文本`右对齐，而不是应该让其在`父容器`右对齐。  
 
+###StartPosition 与 WindowStartupLocation
+
+由于WinForm的样式再Designer文件中，所以我习惯使用打开属性框赋值；  
+而WPF中都在XAML文件中控制，所以我一般不使用属性框。  
+每当我创建一个WinForm项目的时候，都习惯性的要设置起始位置，但是在WPF中，我总是在XAML文件中写·start...`然后发现没有提示，我必须在后台代码中看到它是WindowStartupLocation，然后把它迁移到XAML文件中。  
+关于Position和Location我这里就不过多争论了。  
+
+###Frozen 与 FrozenColumnCount
+
+或许这个属性不是那么常用，但是我还是要吐槽一下。  
+我在WinForm中，只要取到DataGridView的某一列，然后设置Frozen = true就可以了，但是在WPF中发现，得使用DataGrid的属性FrozenColumnCount，而不是列的一个属性。  
+这也就罢了，居然DataGridColumn还有IsFrozen这个属性，最可恶的这个属性居然还是只读的。  
+好吧，我知道冻结列只能冻结前面的，WPF的做法没错，但是这是一个习惯性的问题，而且为了这种问题去查资料太不划算。  
 
