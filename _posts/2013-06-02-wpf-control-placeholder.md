@@ -2,9 +2,9 @@
 layout: post
 title: "WPF控件开发(1)"
 subtitle: "TextBox占位符"
-description: ""
+description: "介绍WPF中做一个TextBox占位符的几种实现方法"
 category: demo
-tags: [C#, WPF, 闲话WinFrom与WPF]
+tags: [C#, WPF]
 ---
 {% include JB/setup %}
 
