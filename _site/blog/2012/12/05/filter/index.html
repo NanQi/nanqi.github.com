@@ -1,0 +1,339 @@
+
+<!DOCTYPE html>
+<html lang="ZH-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>一个筛选的demo</title>
+    <meta name="description" content="介绍WinForm下一个筛选的实现方式，纯属项目之谈">
+    <meta name="author" content="NanQi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/prettify.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/docs.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">南琦的博客</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              
+              
+              
+
+
+  
+    
+      
+      	
+      	<li>
+            <a href="/archive.html">
+                归档
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/categories.html">
+                分类
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/MyProgram.html">
+                我的软件
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/questions.html">
+                问题
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/tags.html">
+                标签
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        
+<?xml version="1.0" encoding="utf-8"?>
+<div class="page-header">
+  <h1>一个筛选的demo
+    <small>
+      
+      
+    </small>
+  </h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span9">
+    <div id="divPost">
+      
+      <p>休息在家，难得有敲代码的雅兴，随手敲个demo，给大家看看。<br/>
+里面部分实现对于新手估计有所帮助，对于高手呢，就请大家给我指错吧。本人照单全收。</p>
+
+<p>demo主要实现了两个功能。</p>
+
+<ul>
+<li>高级查找（FrmSift）</li>
+<li>列表筛选（UCFilter）</li>
+</ul>
+
+
+<p>关于sift和filter两个词这里就不做争论了。<br/>
+先看我画的demo界面：</p>
+
+<p><img src="/image/filter/main.png" alt="主界面" /></p>
+
+<h2>高级查找</h2>
+
+<hr />
+
+<p><img src="/image/filter/sift_main.png" alt="高级查找" /></p>
+
+<p>高级查找针对于查找选项过多的情况下使用，做为一个通用的查找功能出现在软件项目中。<br/>
+高级查找使用时基本只需传入当前的DataGridView实例，生成需要的Where条件。<br/>
+在demo中，高级查找实现了基本的通用功能，可以在多个数据列表中使用。<br/>
+高级查找根据所给的DataGridView生成列选项（左边的选择项），对于某些不想显示的列可以隐藏（代码中我隐藏了第一列GUID），对于特殊的情况，可以传入一个SiftItem数组。<br/>
+数据类型现在只做了三种判断，而且判断方式让人吐血：</p>
+
+<pre><code>switch (type.ToString())
+{
+    case "System.Int16":
+    case "System.Int32":
+    case "System.Int64":
+    case "System.Single":
+    case "System.Double":
+    case "System.Decimal":
+        siftType = SiftTypeEnum.Money;
+        break;
+    case "System.DateTime":
+        siftType = SiftTypeEnum.Date;
+        break;
+    default:
+        siftType = SiftTypeEnum.Text;
+        break;
+}
+</code></pre>
+
+<p>对于数字类型和日期类型，给予两个条件共同完成——<code>从XXX至XXX</code>，所以在处理上也费了点功夫。比如说删除其中一个，另一个也要删除等情况。<br/>
+高级查找现在只做了AND条件，没有强大的组合方式。<br/>
+值得一提的是在处理日期类型时不能得到多数据库的支持，这里由于只是模拟数据，使用DataTable的Select去模拟查找功能，日期类型没问题。但是如果是MSSQL可能会出错，如果更甚者在数据库中使用varchar保存日期类型，这里处理就更加麻烦。（比如本人在项目中就对Oracle的此类现象进行了处理）<br/>
+这里对于时间段做了一些功夫，其实都是有一次项目中需要，这里也就没删，保留了下来，希望对大家有用。</p>
+
+<p><img src="/image/filter/sift_datetime.png" alt="时间段" /></p>
+
+<h2>列表选择</h2>
+
+<hr />
+
+<p><img src="/image/filter/filter.png" alt="列表选择" /></p>
+
+<p>列表选择实现的最大一个功能就是可以筛选。<br/>
+对于筛选后的列表，不会改变已经选择的状态。<br/>
+其实很简单，不止保存数据源，还保存了对于每个数据的选择状态。<br/>
+在列表查找中，对于上方全选的处理实在让我费了不少功夫。<br/>
+主要是很多方面都要我去判断全选状态。<br/>
+ListCheckBox的ItemCheck事件和全选的CheckStateChanged事件几乎让我弄的惨不忍睹，加了减了，减了加了，如下类似的代码我调用了不知道多少次。</p>
+
+<pre><code>this.chbxAll.CheckStateChanged -= this.chbxAll_CheckStateChanged;
+
+//do something
+
+this.chbxAll.CheckStateChanged += this.chbxAll_CheckStateChanged;
+</code></pre>
+
+<p>好吧，写出来就是让大家指正的。</p>
+
+      
+        <blockquote>
+          <strong>源码地址：</strong><a href="https://github.com/NanQi/demo/tree/master/FilterDemo" target="_blank">https://github.com/NanQi/demo/tree/master/FilterDemo</a>
+        </blockquote>
+      
+
+    </div>
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/blog/2012/11/26/bblean" title="bblean备忘">&larr; 上一页</a></li>
+      
+        <li><a href="/archive.html">列表</a></li>
+      
+        <li class="next"><a href="/blog/2012/12/05/software" title="我现在所使用的软件清单">下一页 &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'nanqi'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  <div class="span3">
+    <h4>Published</h4>
+    <div class="date">
+      <span>2012-12-05</span>
+    </div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#C#-ref">C# <span>15</span></a></li>
+     
+    	<li><a href="/tags.html#WinForm-ref">WinForm <span>5</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; NanQi 2012 - 2013
+          参考 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+          源码托管在 <a href="https://github.com/nanqi">NanQi Github</a> 版权声明 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">CC BY-NC-SA 3.0</a>
+          <script src="http://s95.cnzz.com/stat.php?id=4758074&web_id=4758074" language="JavaScript"></script>
+        </p>
+      </footer>
+
+    <script src="/assets/themes/twitter/js/jquery.js"></script>
+    <script src="/assets/themes/twitter/js/prettify.js"></script>
+    <script src="/assets/themes/twitter/js/holder.js"></script>
+    <script src="/assets/themes/twitter/bootstrap/js/bootstrap.min.js"></script>
+    </div> <!-- /container -->
+
+    <script type="text/javascript">
+        $(window).load(function () {
+                $("pre").addClass("prettyprint linenums");
+                prettyPrint();
+        })
+    </script>
+
+    
+  </body>
+</html>
+
