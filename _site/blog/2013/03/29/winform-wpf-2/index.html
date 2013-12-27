@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="ZH-CN">
+  <head>
+    <meta charset="utf-8">
+    <title>闲话WinFrom与WPF(2)</title>
+    <meta name="description" content="本篇主要介绍ComboBox控件使用的一些问题">
+    <meta name="author" content="NanQi">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/assets/themes/twitter/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/prettify.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/assets/themes/twitter/css/docs.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <!-- Le fav and touch icons -->
+  <!-- Update these with your own images
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">南琦的博客</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              
+              
+              
+
+
+  
+    
+      
+      	
+      	<li>
+            <a href="/archive.html">
+                归档
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/categories.html">
+                分类
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/MyProgram.html">
+                我的软件
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/Questions.html">
+                问题
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li>
+            <a href="/tags.html">
+                标签
+                
+                
+            </a>
+        </li>
+      	
+      
+    
+  
+
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="content">
+        
+<?xml version="1.0" encoding="utf-8"?>
+<div class="page-header">
+  <h1>闲话WinFrom与WPF(2)
+    <small>
+      
+      
+          控件篇——ComboBox
+      
+    </small>
+  </h1>
+</div>
+
+<div class="row-fluid">
+  <div class="span9">
+    <div id="divPost">
+      
+      <p>下拉框是一个很经典的控件，网上也有不少对于下拉框控件的扩展，其中包括与TreeView结合，做成树形选择；与DataGrid结合，做成列表选择；又或增加几个按钮来达到快捷编辑集合，选中项特殊显示等等。<br/>
+对于复杂的组合控件，我这里就不必多说，只说说原生ComboBox的一些应用。</p>
+
+<h2>绑定数据源</h2>
+
+<hr />
+
+<p>简单的给Items添加项我就不说了，比如一些类型的选择多数使用这种，如一个员工的职位，是程序猿呢，还是项目经理。<br/>
+但往往这种职位，是需要考虑扩展的，也就是说这个职位也要可维护的，所以一般的软件做法，在数据库中以字典表的形式去保存这类情况，而数据库设计中又有这么一个要求，每个表都要有不重复的ID做主键，所以经常看到如此的表结构：</p>
+
+<pre><code>GUID    varchar(50)
+Name    varchar(50)
+...
+</code></pre>
+
+<p>那么，将该数据展示在ComboBox中，可能就需要展示的是Name，而你只想获取选择的GUID。<br/>
+所幸不管在WinForm还是WPF中，更或是在web开发中，即使纯Html的ComboBox，都有这种选择的一个值，而可能实际获得的是另一个值。<br/>
+WinForm中指定<code>DisplayMember</code>与<code>ValueMember</code>属性，WPF中指定<code>DisplayMemberPath</code>与<code>SelectedValuePath</code>属性，可以很简单的实现上述要求。<br/>
+而如果当这个字典表很大，或者客户需要给这种职位、类别之类的东西编号的时候，这时可能需要在显示的时候既显示编号，又显示名称，这时的表结构可能会这样：</p>
+
+<pre><code>GUID    varchar(50)
+No      varchar(50)
+Name    varchar(50)
+...
+</code></pre>
+
+<p>如果不拘于形式而言，一般完全可以使用No替换GUID，不管怎样，现在就是想要既获得主键列的值，又想显示<code>No + Name</code>的形式。</p>
+
+<h3>重写ToString的一种实现方式</h3>
+
+<hr />
+
+<p>一般如此数据，都会有一个实体层（Model/Entity），比如上例，这个实体层可能看起来像这样：</p>
+
+<pre><code>public class UserModel
+{
+    public string GUID { get; set; }
+    public string No { get; set; }
+    public string Name { get; set; }
+}
+</code></pre>
+
+<p>假设我们从数据源中获取了一个<code>UserModel</code>的集合(如<code>List&lt;UserModel&gt;</code>)，将该集合直接绑定倒ComboBox中，而不指定它的那几个属性，那么他可能显示的是<code>UserModel</code>的类名全称，而为什么显示的是类的全名而不是其他呢，其实这里调用的是<code>UserModel</code>的<code>ToString</code>方法，而现在<code>UserModel</code>的<code>ToString</code>继承自<code>object</code>，<code>object</code>的<code>ToString</code>方法正是返回当前类的全名。<br/>
+知道了这点，我们想让显示<code>No + Name</code>的形式就好办的多了，我们重写<code>UserModel</code>的<code>ToString</code>方法，不指定ComboBox的上述几个属性，直接绑定数据源，<code>ToString</code>方法可能会这样：</p>
+
+<pre><code>public void ToString()
+{
+    return No + "---" + Name;
+}
+</code></pre>
+
+<p>但随即你就会发现WinForm有一个问题，如果你没有指定<code>DisplayMember</code>属性，而是只指定<code>ValueMember</code>属性，那么他会将<code>ValueMember</code>属性也当成<code>DisplayMember</code>属性去处理，而不会调用<code>ToString</code>方法。</p>
+
+<p>因为WinForm的这个问题，我们可能会使用另一种<code>万能</code>方式去获取选择项的某列值——使用<code>SelectedItem</code>属性。之所以现在才说，是因为<code>SelectedItem</code>属性是一个<code>object</code>类型，这样在我这个程序里，可能是<code>UserModel</code>，在另一个程序里，可能是<code>DataViewRow</code>，虽然<code>万能</code>，但实现不够优雅。</p>
+
+<h3>添加一个属性</h3>
+
+<hr />
+
+<p>这点很简单，很正常，但是有些人认为不应该修改Model层的属性，Model层应该和数据库字段一一对应，而且堂而言之，为工具生成Model层替换方便...<br/>
+这里我也表示你下自己的观点，本人十分反感如此说法，正如在使用MVVM时不能在后台写代码一样反感，将原本一个事件，一行的代码，复杂的弄在xaml文件中去实现。<br/>
+添加一个属性，这种方式没有任何错误，如果使用MVVM，这个属性可以写在VM中，这个属性可能是这样：</p>
+
+<pre><code>public string DisplayName
+{
+    get 
+    { 
+        return ToString();
+    }
+}
+</code></pre>
+
+<p>也可以不重写<code>ToString</code>，而是把<code>ToString</code>中的代码移过来。</p>
+
+<h2>自动提示(AutoComplete)</h2>
+
+<hr />
+
+<p>关于自动提示，ComboBox其实都是天生就支持的，只是WinForm里做的功能多一点，而WPF功能少一点（只是定位）。<br/>
+当然，这只能说WPF比WinForm灵活，扩展方便。</p>
+
+<p>WinForm中的自动提示有专门的属性去做，如果你按类型排序，这几个类型都在杂项中，都以<code>AutoComplete</code>为前缀。<br/>
+其实这里的<code>AutoCompleteSource</code>属性定的很鸡肋，我用的基本也只有<code>ListItems</code>和<code>CustomSource</code>两个选项，而且本人认为<code>CustomSource</code>使用有点重复的概念，几乎没有人想在提示的时候使用一个数据源，而选择的时候使用另一个数据源。<br/>
+当然，也不排除各种变态的需求，但多做一点总比少做一点要好么，而也正是这点想法的分歧，铸就了WPF的反其道而行之。</p>
+
+<p>本来想写专文来说说这个，但是自己WPF所知甚浅，惟恐误人子弟，这里就随便扯两句，以WPF的ComboBox为例，也不算脱离主题。</p>
+
+<p>WPF的ComboBox其实是一个复杂控件，有一个<code>ToggleButton</code>用来表示下拉按钮，一个<code>Popup</code>用来表示下拉框，在编辑状态（IsEditable="True"），还会有一个<code>TextBox</code>，所以，如果WPF没有提供一个ComboBox，照道理来说，是很容易自己写一个ComboBox的。<br/>
+WPF中很多控件都是这样，可能都是使用<code>Primitives</code>命名控件下的控件组合而成。</p>
+
+<p>在WPF中如果自带的自动提示功能有点简单，只要设置3个属性即可：<code>IsEditable</code>，<code>StayOpenOnEdit</code>，<code>IsTextSearchEnabled</code>，而这种自动提示只是简简单单的一个定位功能，很多时候我们要的是筛选，而不是定位。</p>
+
+<p>要实现WPF中ComboBox的自动提示，方式可以有很多，假设咱们不考虑如何去实现对于数据源的筛选，而只是实现界面中当ComboBox的Text改变时，让其筛选，并展示下拉框（<code>Popup</code>）也不是一个简单的事情。<br/>
+其中一个原因是由于WPF中一个问题：</p>
+
+<pre><code>当设置ComboBox的IsDropDownOpen属性为True时（让ComboBox展开下拉框），TextBox中的文本被全选。  
+</code></pre>
+
+<p>其实WPF中的问题很多，又何止这一个。<br/>
+当然，正式因为WPF的简单性，才使得这些问题（Bug）都可以自己解决，所以很多东西，其实根本不是问题。</p>
+
+<hr />
+
+<p>写着写着，就写多了，至于如何实现WPF中ComboBox的自动提示，我看还是留在以后去细讲，这篇就此结束。</p>
+
+      
+
+    </div>
+    <hr>
+    <div class="pagination">
+      <ul>
+      
+        <li class="prev"><a href="/blog/2013/03/23/winform-wpf-1" title="闲话WinFrom与WPF(1)">&larr; 上一页</a></li>
+      
+        <li><a href="/archive.html">列表</a></li>
+      
+        <li class="next"><a href="/blog/2013/03/31/winform-wpf-3" title="闲话WinFrom与WPF(3)">下一页 &rarr;</a></li>
+      
+      </ul>
+    </div>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'nanqi'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+  <div class="span3">
+    <h4>Published</h4>
+    <div class="date">
+      <span>2013-03-29</span>
+    </div>
+
+  
+    <h4>Tags</h4>
+    <ul class="tag_box">
+    
+    
+
+
+  
+     
+    	<li><a href="/tags.html#C#-ref">C# <span>15</span></a></li>
+     
+    	<li><a href="/tags.html#WPF-ref">WPF <span>5</span></a></li>
+     
+    	<li><a href="/tags.html#闲话WinFrom与WPF-ref">闲话WinFrom与WPF <span>3</span></a></li>
+    
+  
+
+
+
+    </ul>
+  
+  </div>
+</div>
+
+
+      </div>
+
+      <footer>
+        <p>&copy; NanQi 2012 - 2013
+          参考 <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          和 <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+          源码托管在 <a href="https://github.com/nanqi">NanQi Github</a> 版权声明 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/">CC BY-NC-SA 3.0</a>
+          <script src="http://s95.cnzz.com/stat.php?id=4758074&web_id=4758074" language="JavaScript"></script>
+        </p>
+      </footer>
+
+    <script src="/assets/themes/twitter/js/jquery.js"></script>
+    <script src="/assets/themes/twitter/js/prettify.js"></script>
+    <script src="/assets/themes/twitter/js/holder.js"></script>
+    <script src="/assets/themes/twitter/bootstrap/js/bootstrap.min.js"></script>
+    </div> <!-- /container -->
+
+    <script type="text/javascript">
+        $(window).load(function () {
+                $("pre").addClass("prettyprint linenums");
+                prettyPrint();
+        })
+    </script>
+
+    
+  </body>
+</html>
+
