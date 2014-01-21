@@ -100,8 +100,7 @@ ClientBin
 ~$*
 *.dbmdl
 Generated_Code #added for RIA/Silverlight projects
-# jekyll build path : _site
-_site/ 
+_site/ # jekyll build path : _site
 *.swp # vim temp file
 
 # Backup & report files from converting an old project file to a newer
