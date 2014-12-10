@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "二叉树爱情 - 20.未济"
-description: "未济"
+title: "二叉树爱情 - 20.生日"
+description: "生日"
 category: 二叉树爱情
 tags: [小说, 二叉树爱情]
 ---
